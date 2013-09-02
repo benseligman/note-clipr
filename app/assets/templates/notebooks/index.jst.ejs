@@ -1,6 +1,8 @@
 <h1>All Yer Notebooks</h1>
-<ul>
+<ul id="notebook-list">
   <% this.collection.each(function (model) { %>
-    <li><%= model.escape("name") %></li>
+    <li data-id="<%= model.id %>">
+      <%= model.escape("name") %>
+    </li>
   <% }); %>
 </ul>

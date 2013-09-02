@@ -1,0 +1,7 @@
+<h1>Notes</h1>
+<h2><%= parentModel.escape("name") %></h2>
+<ul>
+  <% this.collection.each(function (model) { %>
+    <li><%= model.escape("title") %></li>
+  <% }); %>
+</ul>

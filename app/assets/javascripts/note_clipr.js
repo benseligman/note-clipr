@@ -3,14 +3,18 @@ window.NoteClipr = {
   Collections: {},
   Views: {},
   Routers: {},
+  Store: {},
   initialize: function(currentUser, notebooksData) {
-    NoteClipr.currentUser = currentUser;
+    NoteClipr.Store.currentUser = currentUser;
 
-    var notebooks = new NoteClipr.Collections.Notebooks(notebooksData);
+    var notebooks = new NoteClipr.Collections.Notebooks(notebooksData, {
+      parse: true
+    });
 
-    $rootEl = $("<div>");
-    $("body").append($rootEl);
-    var mainRouter = new NoteClipr.Routers.Main($rootEl, notebooks);
+    $notebookList = $("<div class='notebook-list'>");
+    $notesList = $("<div class='note-list'>");
+    $("body").append($notebookList).append($notesList);
+    NoteClipr.Store.Router = new NoteClipr.Routers.Main($notebookList, $notesList, notebooks);
 
     Backbone.history.start();
   }
