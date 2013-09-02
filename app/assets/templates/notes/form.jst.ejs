@@ -1,3 +1,5 @@
+<% var buttonName = note.isNew ? "Save Note" : "Update Note" %>
+
 <form id="note-edit" data-id="<%= note.id %>">
   <label for="note-title">Title</label>
   <input type="text" name="note[title]" id="note-title" value="<%= note.escape("title") %>" placeholder="Untitled">
@@ -19,5 +21,5 @@
   <textarea name="note[body]" id="note-body"><%= note.escape("body") %></textarea>
   <br>
 
-  <input type="submit" value="Update Note">
+  <input type="submit" value="<%= buttonName %>">
 </form>

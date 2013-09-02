@@ -45,8 +45,15 @@ NoteClipr.Routers.Main = Backbone.Router.extend({
 
   showNotesForm: function (noteId) {
     this._removeNotesForm();
+    var note;
 
-    var note = this.currentNotesIndex.collection.get(noteId);
+    if (noteId){
+      note = this.currentNotesIndex.collection.get(noteId);
+    } else {
+      note = new NoteClipr.Models.Note();
+      this.currentNotesIndex.collection.add(note);
+    }
+
     var view = new NoteClipr.Views.NotesForm({
       model: note
     });

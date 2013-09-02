@@ -6,7 +6,8 @@ NoteClipr.Views.NotesIndex = Backbone.View.extend({
   },
 
   events: {
-    "click ul#notes-index li": "showNotesForm"
+    "click ul#notes-index li": "showNotesForm",
+    "click button#new-note": "showNotesForm"
   },
 
   template: JST['notes/index'],
@@ -21,7 +22,7 @@ NoteClipr.Views.NotesIndex = Backbone.View.extend({
   },
 
   showNotesForm: function (event) {
-    var noteId = $(event.currentTarget).data('id');
+    var noteId = $(event.currentTarget).data('id'); //nil id for new note
     NoteClipr.Store.Router.showNotesForm(noteId);
   },
 

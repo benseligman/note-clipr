@@ -1,5 +1,6 @@
 <h1>Notes</h1>
 <h2><%= parentModel.escape("name") %></h2>
+<button id="new-note" type="Submit">Add a Note!</button>
 <ul id="notes-index">
   <% this.collection.each(function (model) { %>
       <li data-id="<%= model.id %>">

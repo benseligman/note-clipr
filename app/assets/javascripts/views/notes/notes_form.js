@@ -1,7 +1,7 @@
 NoteClipr.Views.NotesForm = Backbone.View.extend({
 
   events: {
-    "submit form#note-edit": "updateNote"
+    "submit form#note-edit": "saveNote"
   },
 
   template: JST['notes/form'],
@@ -11,7 +11,7 @@ NoteClipr.Views.NotesForm = Backbone.View.extend({
     return this;
   },
 
-  updateNote: function (event) {
+  saveNote: function (event) {
     event.preventDefault();
     var noteData = $(event.currentTarget).serializeJSON().note;
 
