@@ -3,13 +3,10 @@ window.NoteClipr = {
   Collections: {},
   Views: {},
   Routers: {},
-  initialize: function(currentUser) {
+  initialize: function(currentUser, noteBooks) {
     NoteClipr.currentUser = currentUser;
-    $("body").append($login).append($content);
+
+    $("body").append($login).append($content, noteBooks);
     var mainRouter = new NoteClipr.Routers.Main($content);
   }
 };
-
-$(document).ready(function(){
-  NoteClipr.initialize();
-});

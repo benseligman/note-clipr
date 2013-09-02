@@ -1,3 +1,16 @@
+# == Schema Information
+#
+# Table name: users
+#
+#  id              :integer          not null, primary key
+#  username        :string(255)      not null
+#  email           :string(255)      not null
+#  password_digest :string(255)      not null
+#  session_token   :string(255)      not null
+#  created_at      :datetime         not null
+#  updated_at      :datetime         not null
+#
+
 require 'bcrypt'
 
 class User < ActiveRecord::Base
@@ -24,9 +37,23 @@ class User < ActiveRecord::Base
 
   before_validation :set_token, :on => :create
   before_validation { self.email.downcase!; self.username.downcase! }
-  before_save { encrypt_password unless self.password.empty? }
+  before_save { encrypt_password unless self.password.nil? }
+
+  has_many :notebooks
 
   include BCrypt
+
+  def self.find_by_credentials(credentials)
+    debugger
+    user = User.find_by_username(credentials[:login_name])
+    user ||= User.find_by_email(credentials[:login_name].downcase)
+
+    user if user && user.encrypted_password == credentials[:password]
+  end
+
+  def as_json(options = {})
+    super(options.merge( { :only => [:username, :id] } ))
+  end
 
   def encrypted_password
     @encrypted_password ||= Password.new(self.password_digest)
@@ -37,13 +64,6 @@ class User < ActiveRecord::Base
 
     @encrypted_password = Password.create(self.password)
     self.password_digest = @encrypted_password
-  end
-
-  def self.find_by_credentials(credentials)
-    user = User.find_by_username(credentials[:login_name])
-    user ||= User.find_by_email(credentials[:login_name].downcase)
-
-    user if user && user.encrypted_password == credentials[:password]
   end
 
   def set_token!

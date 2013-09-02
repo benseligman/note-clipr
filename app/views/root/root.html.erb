@@ -1,6 +1,7 @@
 <script type="text/javascript">
   $(function () {
-    var currentUser = <%= current_user %>;
+    var currentUser = <%= self.current_user.to_json.html_safe %>;
+    var notebooks = <%= render(:file => 'notebooks/index.json', :locals => { :notebooks => self.current_user.notebooks }).html_safe %>
 
     NoteClipr.initialize(currentUser);
   });
