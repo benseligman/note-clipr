@@ -11,14 +11,14 @@ window.NoteClipr = {
       parse: true
     });
 
-    var $notebookList = $("<div class='notebook-list'>");
-    var $notesList = $("<div class='note-list'>");
+    var $notebookIndex = $("<div class='notebook-list'>");
+    var $notesIndex = $("<div class='note-list'>");
     var $notesForm = $("<div class='note-form'>");
-    $("body").append($notebookList).append($notesList).append($notesForm);
+    $("body").append($notebookIndex).append($notesIndex).append($notesForm);
 
     NoteClipr.Store.Router = new NoteClipr.Routers.Main({
-      $notebookList: $notebookList,
-      $notesList: $notesList,
+      $notebookIndex: $notebookIndex,
+      $notesIndex: $notesIndex,
       $notesForm: $notesForm,
       notebooks: notebooks
     });

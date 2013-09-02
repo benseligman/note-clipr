@@ -2,24 +2,24 @@ NoteClipr.Routers.Main = Backbone.Router.extend({
 
   initialize: function (options) {
 
-    this.$notebookList = options.$notebookList;
-    this.$notesList = options.$notesList;
+    this.$notebookIndex = options.$notebookIndex;
+    this.$notesIndex = options.$notesIndex;
     this.$notesForm = options.$notesForm;
 
     this.collection = options.notebooks;
   },
 
   routes: {
-    "": "showNotebooksList"
+    "": "showNotebooksIndex"
   },
 
-  showNotebooksList: function () {
+  showNotebooksIndex: function () {
     var view = new NoteClipr.Views.NotebooksIndex({ collection: this.collection });
-    this.$notebookList.html(view.render().$el);
+    this.$notebookIndex.html(view.render().$el);
   },
 
-  showNotesList: function (notebookId) {
-    this._removeNotesList();
+  showNotesIndex: function (notebookId) {
+    this._removeNotesIndex();
     var notebook = this.collection.get(notebookId);
 
     var view = new NoteClipr.Views.NotesIndex({
@@ -27,13 +27,13 @@ NoteClipr.Routers.Main = Backbone.Router.extend({
       model: notebook
     });
 
-    this.currentNotesList = view;
-    this.$notesList.html(view.render().$el);
+    this.currentNotesIndex = view;
+    this.$notesIndex.html(view.render().$el);
   },
 
-  _removeNotesList: function () {
-    if (typeof this.currentNotesList === "object") {
-      this.currentNotesList.remove();
+  _removeNotesIndex: function () {
+    if (typeof this.currentNotesIndex === "object") {
+      this.currentNotesIndex.remove();
     }
   },
 
@@ -46,7 +46,7 @@ NoteClipr.Routers.Main = Backbone.Router.extend({
   showNotesForm: function (noteId) {
     this._removeNotesForm();
 
-    var note = this.currentNotesList.collection.get(noteId);
+    var note = this.currentNotesIndex.collection.get(noteId);
     var view = new NoteClipr.Views.NotesForm({
       model: note
     });
