@@ -1,12 +1,12 @@
 NoteClipr.Collections.Notes = Backbone.Collection.extend({
-  initialize: function (notebookId) {
-    this.notebookId = notebookId;
+  initialize: function (objects, options) {
+    this.notebookId = options.notebookId;
   },
 
   model: NoteClipr.Models.Note,
 
   url: function () {
-    return "/notebooks/" + notebookId + "/notes";
+    return "/notebooks/" + this.notebookId + "/notes";
   }
 
 });

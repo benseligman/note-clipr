@@ -5,7 +5,7 @@ NoteClipr.Views.NotebooksIndex = Backbone.View.extend({
   },
 
   events: {
-    "click ul li": "showNotesList"
+    "click ul#notebook-list li": "showNotesList"
   },
 
   template: JST['notebooks/index'],
@@ -23,7 +23,10 @@ NoteClipr.Views.NotebooksIndex = Backbone.View.extend({
   showNotesList: function (event) {
     var notebookId = $(event.currentTarget).data('id');
     NoteClipr.Store.Router.showNotesList(notebookId);
+  },
+
+  remove: function () {
+    NoteClipr.Store.Router._removeNotesList();
+    Backbone.View.prototype.remove.call(this);
   }
-
-
 });

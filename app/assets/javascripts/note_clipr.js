@@ -11,10 +11,17 @@ window.NoteClipr = {
       parse: true
     });
 
-    $notebookList = $("<div class='notebook-list'>");
-    $notesList = $("<div class='note-list'>");
-    $("body").append($notebookList).append($notesList);
-    NoteClipr.Store.Router = new NoteClipr.Routers.Main($notebookList, $notesList, notebooks);
+    var $notebookList = $("<div class='notebook-list'>");
+    var $notesList = $("<div class='note-list'>");
+    var $notesForm = $("<div class='note-form'>");
+    $("body").append($notebookList).append($notesList).append($notesForm);
+
+    NoteClipr.Store.Router = new NoteClipr.Routers.Main({
+      $notebookList: $notebookList,
+      $notesList: $notesList,
+      $notesForm: $notesForm,
+      notebooks: notebooks
+    });
 
     Backbone.history.start();
   }

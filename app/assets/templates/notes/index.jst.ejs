@@ -1,7 +1,9 @@
 <h1>Notes</h1>
 <h2><%= parentModel.escape("name") %></h2>
-<ul>
+<ul id="notes-index">
   <% this.collection.each(function (model) { %>
-    <li><%= model.escape("title") %></li>
+      <li data-id="<%= model.id %>">
+        <%= model.escape("title") || "Untitled" %>
+      </li>
   <% }); %>
 </ul>
