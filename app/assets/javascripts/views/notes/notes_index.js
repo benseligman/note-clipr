@@ -1,8 +1,8 @@
 NoteClipr.Views.NotesIndex = Backbone.View.extend({
 
   initialize: function () {
-    // var renderCallback = this.render.bind(this);
-    // this.listenTo(this.collection, "sync", renderCallback);
+    var renderCallback = this.render.bind(this);
+    this.listenTo(this.collection, "sync", renderCallback);
   },
 
   events: {

@@ -38,7 +38,7 @@ NoteClipr.Routers.Main = Backbone.Router.extend({
   },
 
   _removeNotesForm: function () {
-    if (typeof this.currentNoteFrom === "object") {
+    if (typeof this.currentNotesForm === "object") {
       this.currentNotesForm.remove();
     }
   },
