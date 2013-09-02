@@ -1,5 +1,6 @@
 NoteClipr.Collections.Notebooks = Backbone.Collection.extend({
 
-  model: NoteClipr.Models.Notebook
+  model: NoteClipr.Models.Notebook,
+  url: "/notebooks"
 
 });

@@ -1,0 +1,6 @@
+<h1>All Yer Notebooks</h1>
+<ul>
+  <% this.collection.each(function (model) { %>
+    <li><%= model.escape("name") %></li>
+  <% }); %>
+</ul>

@@ -1,17 +1,16 @@
-NewsClipr.Routers.Authentication = Backbone.Router.extend({
-  initialize: function ($rootEl) {
+NoteClipr.Routers.Main = Backbone.Router.extend({
+  initialize: function ($rootEl, notebooks) {
     this.$rootEl = $rootEl;
+    this.collection = notebooks;
   },
 
   routes: {
-    "": "showStatus"
+    "": "showNotebooksIndex"
   },
 
-  showStatus: function () {
-    if (NewsClipr.currentUser) {
-      var view = new NewsClipr.Views.loggedInView();
-    } else {
-      var view = new NewsClipr.Views.logInView();
-    }
+  showNotebooksIndex: function () {
+    var view = new NoteClipr.Views.NotebooksIndex({ collection: this.collection });
+    this.$rootEl.html(view.render().$el);
   }
-})
+
+});
