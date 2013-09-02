@@ -40,6 +40,7 @@ class User < ActiveRecord::Base
   before_save { encrypt_password unless self.password.nil? }
 
   has_many :notebooks
+  has_many :notes, :through => :notebooks
 
   include BCrypt
 
