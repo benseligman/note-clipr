@@ -1,4 +1,6 @@
 class SessionsController < ApplicationController
+  before_filter :require_no_logged_in_user!
+
   def new
     render :new
   end
@@ -8,7 +10,7 @@ class SessionsController < ApplicationController
 
     if @user
       log_in(@user)
-      render :json => "Welcome, user!"
+      redirect_to root_url
     else
       flash.now["alert"] = "Invalid username/password combindation."
       render :new

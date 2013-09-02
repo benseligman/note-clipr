@@ -1,4 +1,6 @@
 class UsersController < ApplicationController
+  before_filter :require_no_logged_in_user!
+
   def new
     @user = User.new
     render :new
@@ -9,7 +11,7 @@ class UsersController < ApplicationController
 
     if @user.save
       log_in(@user)
-      render :json => "Welcome, user!"
+      redirect_to root_url
     else
       flash.now["errors"] = @user.errors.full_messages
       render :new

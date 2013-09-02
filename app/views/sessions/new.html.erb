@@ -1,5 +1,6 @@
 <%= flash["alert"] %>
 <h1>Sign In!</h1>
+<a href="<%= new_user_url %>">Don't have an account? Sign up now!</a>
 <form action="<%= session_url %>" method="post">
   <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
 
