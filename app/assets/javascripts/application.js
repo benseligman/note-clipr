@@ -12,6 +12,7 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require serializeJSON.min.js
 //= require underscore
 //= require backbone
 //= require note_clipr
