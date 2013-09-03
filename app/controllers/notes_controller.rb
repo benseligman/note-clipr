@@ -1,8 +1,9 @@
 class NotesController < ApplicationController
   def update
-    @note = Note.find(params[:id]);
+    @note = Note.find_by_id(params[:id])
+    @note.assign_attributes(params[:note])
 
-    if @note.update_attributes(params[:note])
+    if @note.save_with_tags!(@params[:tags])
       render :json => @note
     else
       render :json => @note.errors.full_messages, :status => 422
@@ -12,7 +13,7 @@ class NotesController < ApplicationController
   def create
     @note = Note.new(params[:note])
 
-    if @note.save
+    if @note.save_with_tags!(params[:tags])
       render :json => @note
     else
       render :json => @note.errors.full_messages, :status => 422

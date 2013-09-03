@@ -23,34 +23,24 @@ class Note < ActiveRecord::Base
   has_many :taggings
   has_many :tags, :through => :taggings
 
-  def self.save_with_tags!(params)
-    note = self.updated_note_for_params(params)
-    new_tag_bodies = params[:tags].nil? ? [] : params[:tags].map(&:downcase)
+  def save_with_tags!(new_tag_bodies)
+    new_tag_bodies = new_tag_bodies.nil? ? [] : new_tag_bodies.map(&:downcase)
 
     Note.transaction do
-      note.save!
+      self.save!
 
-      note_owner = note.owning_user
+      note_owner = self.owning_user
       owner_tags = note_owner.tags
 
       new_tag_bodies.each do |new_tag_body|
         next if new_tag_body.blank? ||
-                note.tags.pluck("body").include?(new_tag_body)
+                self.tags.pluck("body").include?(new_tag_body)
 
         tag = Tag.where(:body => new_tag_body, :user_id => note_owner.id).first_or_create
-
-        Tagging.create!(:note_id => note.id, :tag_id => tag.id)
+        Tagging.create!(:note_id => self.id, :tag_id => tag.id)
       end
     end
-
-  end
-
-  def self.updated_note_for_params(params)
-    if params[:id]
-      note = Note.includes(:tags).find_by_id(params[:id])
-      note.assign_attributes(params[:note])
-    end
-
-    note || Note.new(params[:note])
   end
 end
+
+
