@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130902044345) do
+ActiveRecord::Schema.define(:version => 20130903165506) do
 
   create_table "notebooks", :force => true do |t|
     t.integer  "user_id",    :null => false
@@ -35,6 +35,28 @@ ActiveRecord::Schema.define(:version => 20130902044345) do
   end
 
   add_index "notes", ["notebook_id"], :name => "index_notes_on_notebook_id"
+
+  create_table "taggings", :force => true do |t|
+    t.integer  "note_id",    :null => false
+    t.integer  "tag_id",     :null => false
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  add_index "taggings", ["note_id", "tag_id"], :name => "index_taggings_on_note_id_and_tag_id", :unique => true
+  add_index "taggings", ["note_id"], :name => "index_taggings_on_note_id"
+  add_index "taggings", ["tag_id"], :name => "index_taggings_on_tag_id"
+
+  create_table "tags", :force => true do |t|
+    t.integer  "user_id",    :null => false
+    t.string   "body",       :null => false
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  add_index "tags", ["body"], :name => "index_tags_on_body"
+  add_index "tags", ["user_id", "body"], :name => "index_tags_on_user_id_and_body", :unique => true
+  add_index "tags", ["user_id"], :name => "index_tags_on_user_id"
 
   create_table "users", :force => true do |t|
     t.string   "username",        :null => false

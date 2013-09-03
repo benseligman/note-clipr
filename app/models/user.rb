@@ -42,6 +42,8 @@ class User < ActiveRecord::Base
   has_many :notebooks
   has_many :notes, :through => :notebooks
 
+  has_many :tags
+
   include BCrypt
 
   def self.find_by_credentials(credentials)
