@@ -1,8 +1,7 @@
 NoteClipr.Views.NotebooksIndex = Backbone.View.extend({
   initialize: function  () {
     var renderCallback = this.render.bind(this);
-    this.listenTo(this.collection, "remove", renderCallback);
-    this.listenTo(this.collection, "any", renderCallback);
+    this.listenTo(this.collection, "sort", renderCallback);
   },
 
   events: {
@@ -15,19 +14,18 @@ NoteClipr.Views.NotebooksIndex = Backbone.View.extend({
     var newForm = new NoteClipr.Views.NotebooksForm({
       collection: this.collection
     });
+    var subView = newForm.render().$el;
 
-    this.$el.html(newForm.render().$el);
-    this.$el.append(this.template({ collection: this.collection }));
+    this.$el.html("<h1>All Your Notebooks</h1>");
+    this.$el.append(subView);
+    this.$el.append(this.template({
+      collection: this.collection
+    }));
     return this;
   },
 
   showNotesIndex: function (event) {
     var notebookId = $(event.currentTarget).data('id');
-    NoteClipr.Store.Router.showNotesIndex(notebookId);
-  },
-
-  remove: function () {
-    NoteClipr.Store.Router._removeNotesIndex();
-    Backbone.View.prototype.remove.call(this);
+    NoteClipr.Store.Router.navigate("#/notebooks/" + notebookId, { trigger: true });
   }
 });

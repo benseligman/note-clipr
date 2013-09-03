@@ -17,11 +17,14 @@ window.NoteClipr = {
     $("body").append($notebookIndex).append($notesIndex).append($notesForm);
 
     NoteClipr.Store.Router = new NoteClipr.Routers.Main({
-      $notebookIndex: $notebookIndex,
       $notesIndex: $notesIndex,
       $notesForm: $notesForm,
       notebooks: notebooks
     });
+
+
+  var notebooksView = new NoteClipr.Views.NotebooksIndex({ collection: notebooks });
+  $notebookIndex.html(notebooksView.render().$el);
 
     Backbone.history.start();
   }

@@ -6,8 +6,8 @@ NoteClipr.Views.NotesIndex = Backbone.View.extend({
   },
 
   events: {
-    "click ul#notes-index li": "showNotesForm",
-    "click button#new-note": "showNotesForm"
+    "click ul#notes-index li": "update",
+    "click button#new-note": "new"
   },
 
   template: JST['notes/index'],
@@ -21,14 +21,18 @@ NoteClipr.Views.NotesIndex = Backbone.View.extend({
     return this;
   },
 
-  showNotesForm: function (event) {
-    var noteId = $(event.currentTarget).data('id'); //nil id for new note
-    NoteClipr.Store.Router.showNotesForm(noteId);
+  update: function (event) {
+    var noteId = $(event.currentTarget).data('id');
+    this._requestNoteForm(noteId);
   },
 
-  remove: function () {
-    NoteClipr.Store.Router._removeNotesForm();
-    Backbone.View.prototype.remove.call(this);
+  new: function (event) {
+    this._requestNoteForm("new");
+  },
+
+  _requestNoteForm: function (noteId) {
+    var formUrl = "#/notebooks/" + this.collection.notebookId + "/notes/" + noteId;
+    NoteClipr.Store.Router.navigate(formUrl);
   }
 
 });

@@ -1,8 +1,6 @@
 NoteClipr.Routers.Main = Backbone.Router.extend({
 
   initialize: function (options) {
-
-    this.$notebookIndex = options.$notebookIndex;
     this.$notesIndex = options.$notesIndex;
     this.$notesForm = options.$notesForm;
 
@@ -10,18 +8,15 @@ NoteClipr.Routers.Main = Backbone.Router.extend({
   },
 
   routes: {
-    "": "showNotebooksIndex"
-    // Use routes!
+    "notebooks/:id": "notesIndex",
+    "notebooks/:notebook_id/notes/new": "notesForm",
+    "notebooks/:notebook_id/notes/:id": "notesForm"
   },
 
-  showNotebooksIndex: function () {
-    var view = new NoteClipr.Views.NotebooksIndex({ collection: this.collection });
-    this.$notebookIndex.html(view.render().$el);
-  },
+  notesIndex: function (id) {
+    this._removePanels();
 
-  showNotesIndex: function (notebookId) {
-    this._removeNotesIndex();
-    var notebook = this.collection.get(notebookId);
+    var notebook = this.collection.get(id);
 
     var view = new NoteClipr.Views.NotesIndex({
       collection: notebook.get("notes"),
@@ -32,37 +27,29 @@ NoteClipr.Routers.Main = Backbone.Router.extend({
     this.$notesIndex.html(view.render().$el);
   },
 
-  _removeNotesIndex: function () {
-    if (typeof this.currentNotesIndex === "object") {
-      this.currentNotesIndex.remove();
-    }
-  },
-
-  _removeNotesForm: function () {
-    if (typeof this.currentNotesForm === "object") {
-      this.currentNotesForm.remove();
-    }
-  },
-
-  showNotesForm: function (noteId) {
-    this._removeNotesForm();
-    var note;
-    var notebook = this.currentNotesIndex.collection
-
-    if (noteId){
-      note = notebook.get(noteId);
-    } else {
-      note = new NoteClipr.Models.Note();
-      notebook.add(note);
-    }
+  notesForm: function (notebook_id, id) {
+    this._removePanels();
 
     var view = new NoteClipr.Views.NotesForm({
-      model: note,
+      id: id,
+      notebook_id: notebook_id,
       collection: this.collection
     });
 
+    this.notesIndex(notebook_id);
+
     this.currentNotesForm = view;
     this.$notesForm.html(view.render().$el);
+  },
+
+  _removePanels: function () {
+    if (typeof this.currentNotesIndex === "object") {
+      this.currentNotesIndex.remove();
+    }
+
+    if (typeof this.currentNotesForm === "object") {
+      this.currentNotesForm.remove();
+    }
   }
 
 });
