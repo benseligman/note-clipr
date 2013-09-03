@@ -1,6 +1,18 @@
 <% var buttonName = note.isNew ? "Save Note" : "Update Note" %>
 
 <form id="note-edit" data-id="<%= note.id %>">
+
+  <label for="note_notebook">Notebook</label>
+  <select name="note[notebook_id]" id="note_notebook">
+    <% var notebookId = note.get("notebook_id") %>
+    <% notebooks.each(function (notebook) { %>
+      <option value="<%= notebook.id %>" <%= notebookId == notebook.id ? "selected" : "" %>>
+        <%= notebook.escape("name") %>
+      </option>
+    <% }); %>
+  </select>
+  <br>
+
   <label for="note-title">Title</label>
   <input type="text" name="note[title]" id="note-title" value="<%= note.escape("title") %>" placeholder="Untitled">
   <br>

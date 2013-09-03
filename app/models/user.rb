@@ -45,7 +45,6 @@ class User < ActiveRecord::Base
   include BCrypt
 
   def self.find_by_credentials(credentials)
-    debugger
     user = User.find_by_username(credentials[:login_name])
     user ||= User.find_by_email(credentials[:login_name].downcase)
 

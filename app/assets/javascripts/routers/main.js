@@ -11,6 +11,7 @@ NoteClipr.Routers.Main = Backbone.Router.extend({
 
   routes: {
     "": "showNotebooksIndex"
+    // Use routes!
   },
 
   showNotebooksIndex: function () {
@@ -46,16 +47,18 @@ NoteClipr.Routers.Main = Backbone.Router.extend({
   showNotesForm: function (noteId) {
     this._removeNotesForm();
     var note;
+    var notebook = this.currentNotesIndex.collection
 
     if (noteId){
-      note = this.currentNotesIndex.collection.get(noteId);
+      note = notebook.get(noteId);
     } else {
       note = new NoteClipr.Models.Note();
-      this.currentNotesIndex.collection.add(note);
+      notebook.add(note);
     }
 
     var view = new NoteClipr.Views.NotesForm({
-      model: note
+      model: note,
+      collection: this.collection
     });
 
     this.currentNotesForm = view;
