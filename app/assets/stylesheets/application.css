@@ -1,3 +1,7 @@
+/*
+*= require_self
+*= require bootstrap
+*/
 .panel {
   float: left;
   border: 1px solid black;
@@ -12,5 +16,5 @@
 }
 
 .right {
-  width: 45%;
+  width: 40%;
 }
