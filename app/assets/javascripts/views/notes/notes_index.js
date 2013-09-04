@@ -6,6 +6,7 @@ NoteClipr.Views.NotesIndex = Backbone.View.extend({
     var renderCallback = this.render.bind(this);
     this.listenTo(this.collection, "sort", renderCallback);
     this.listenTo(this.collection, "change", renderCallback);
+    this.listenTo(NoteClipr.Store.tags, "change", renderCallback);
   },
 
   events: {
@@ -16,8 +17,11 @@ NoteClipr.Views.NotesIndex = Backbone.View.extend({
   template: JST['notes/index'],
 
   render: function () {
+    var activeTags = NoteClipr.Store.tags.activeOnly();
+    var filteredNotes = this.collection.tagFilter(activeTags);
+
     this.$el.html(this.template({
-      collection: this.collection,
+      collection: filteredNotes,
       inNotebook: !!(this.notebook_id)
     }));
 

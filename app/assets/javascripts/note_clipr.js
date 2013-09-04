@@ -36,6 +36,7 @@ window.NoteClipr = {
   var tagsView = new NoteClipr.Views.TagsIndex({
     collection: NoteClipr.Store.tags
   });
+
   $tagsPanel.html(tagsView.render().$el);
 
   Backbone.history.start();

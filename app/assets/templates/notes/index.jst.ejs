@@ -3,7 +3,7 @@
   <button id="new-note" type="Submit">Add a Note!</button>
 <% } %>
 <ul id="notes-index">
-  <% this.collection.each(function (model) { %>
+  <% collection.each(function (model) { %>
       <li data-id="<%= model.id %>">
         <%= model.escape("title") || "Untitled" %>
       </li>

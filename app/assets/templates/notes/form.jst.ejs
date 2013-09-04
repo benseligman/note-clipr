@@ -18,5 +18,11 @@
   <textarea name="note[body]" id="note-body"><%= note.escape("body") %></textarea>
   <br>
 
+  <ul>
+    <% note.get("tags").each(function (tag) { %>
+      <li><%= tag.escape("body") %></li>
+    <% }) %>
+  </ul>
+
   <input type="submit" value="Save Note">
 </form>

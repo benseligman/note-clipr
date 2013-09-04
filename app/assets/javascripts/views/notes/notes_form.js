@@ -20,6 +20,7 @@ NoteClipr.Views.NotesForm = Backbone.View.extend({
     var noteData = $(event.currentTarget).serializeJSON().note;
     var that = this;
     this.model.save(noteData, {
+      patch: true,
       success: function (savedNote) {
         that.model.collection.sort();
         that.remove();

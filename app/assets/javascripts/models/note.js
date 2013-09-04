@@ -4,7 +4,7 @@ NoteClipr.Models.Note = Backbone.Model.extend({
 
     tags.each(function (tag) {
      if (!NoteClipr.Store.tags.contains(tag)) {
-      NoteClipr.Store.tags.add(tag.toJSON());
+      NoteClipr.Store.tags.add(tag);
      }
     });
 
