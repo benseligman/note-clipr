@@ -23,11 +23,11 @@ ActiveRecord::Base.transaction do
   ])
 
   Tag.create!([
-    { user_id: 1, body: "first tag" },
-    { user_id: 1, body: "second tag" },
+    { user_id: 1, body: "first-tag" },
+    { user_id: 1, body: "second-tag" },
     { user_id: 1, body: "hockey" },
-    { user_id: 2, body: "field hoceky" },
-    { user_id: 3, body: "not hockey, please" }
+    { user_id: 2, body: "field-hoceky" },
+    { user_id: 3, body: "not-hockey-ever" }
   ])
 
   Tagging.create!([

@@ -12,7 +12,8 @@
 class Tag < ActiveRecord::Base
   attr_accessible :body, :user_id
   validates :body, :user_id, :user, :presence => true
-  validates :body, :uniqueness => { :scope => :user_id }
+  validates :body, :uniqueness => { :scope => :user_id },
+                   :format => { :with => /^[\S]+$/}
 
   before_validation { self.body.downcase! }
 
