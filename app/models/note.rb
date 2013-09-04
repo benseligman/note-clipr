@@ -23,9 +23,8 @@ class Note < ActiveRecord::Base
   has_many :taggings
   has_many :tags, :through => :taggings
 
-  def save_with_tags!(tags)
-    new_tags = new_tags.nil? ? [] : tags.select { |tag| tag.id.nil? }
-    new_tag_bodies = new_tags.map(&:downcase)
+  def save_with_tags!(tagStr)
+    new_tag_bodies = !tagStr || tagStr.empty? ? [] : tagStr.split
 
     Note.transaction do
       self.save!

@@ -17,13 +17,11 @@ NoteClipr.Collections.Notes = Backbone.Collection.extend({
 
     var filtered =  this.filter(function (note) {
       return tags.all(function(tag) {
-        return note.get("tags").some(function (noteTag) {
+        return note.get("tags") && note.get("tags").some(function (noteTag) {
           return noteTag.id === tag.id;
         });
       });
     });
-
-    console.log(filtered);
 
     return new NoteClipr.Collections.Notes(filtered);
   }

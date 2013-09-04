@@ -6,6 +6,10 @@ NoteClipr.Collections.Tags = Backbone.Collection.extend({
     var filtered = this.where({active: true});
 
     return new NoteClipr.Collections.Tags(filtered);
+  },
+
+  comparator: function (tag) {
+    return tag.body;
   }
 
 });

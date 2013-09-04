@@ -1,7 +1,7 @@
 <h1>Tags</h1>
 <ul id="tag-list">
   <% this.collection.each(function (model) { %>
-    <li data-id="<%= model.id %>">
+    <li data-id="<%= model.id %>" class="<%= model.get("active") ? "active" : "" %>">
       <%= model.escape("body") %>
     </li>
   <% }); %>

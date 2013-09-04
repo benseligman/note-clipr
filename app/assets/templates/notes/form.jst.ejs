@@ -18,7 +18,12 @@
   <textarea name="note[body]" id="note-body"><%= note.escape("body") %></textarea>
   <br>
 
-  <ul>
+  <label for="tags">Add Tags (separate by spaces)</label>
+  <input type="text" name="tags" id="tags">
+
+
+  <label for="note-tag-list">Current Tags</label>
+  <ul id="note-tag-list">
     <% note.get("tags").each(function (tag) { %>
       <li><%= tag.escape("body") %></li>
     <% }) %>

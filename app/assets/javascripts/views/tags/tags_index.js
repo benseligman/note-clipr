@@ -1,4 +1,8 @@
 NoteClipr.Views.TagsIndex = Backbone.View.extend({
+  initialize: function () {
+    var renderCallback = this.render.bind(this);
+    this.listenTo(this.collection, "add", renderCallback);
+  },
 
   events: {
     "click ul#tag-list li": "toggleTagActive"
