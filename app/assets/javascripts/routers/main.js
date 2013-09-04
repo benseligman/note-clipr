@@ -37,9 +37,11 @@ NoteClipr.Routers.Main = Backbone.Router.extend({
 
   newNoteDetailPanel: function (notebook_id) {
     var notes = this.collection.get(notebook_id).get("notes");
-    var note = new NoteClipr.Models.Note({ notebook_id: notebook_id });
+    var note = new NoteClipr.Models.Note();
     notes.add(note);
     NoteClipr.Store.notes.add(note);
+    note.save({ notebook_id: notebook_id });
+
     this._noteDetailPanel(note);
   },
 
