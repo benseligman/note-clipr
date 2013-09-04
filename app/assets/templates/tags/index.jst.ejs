@@ -1,0 +1,8 @@
+<h1>Tags</h1>
+<ul id="tag-list">
+  <% this.collection.each(function (model) { %>
+    <li data-id="<%= model.id %>">
+      <%= model.escape("body") %>
+    </li>
+  <% }); %>
+</ul>

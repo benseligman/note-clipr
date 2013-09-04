@@ -1,17 +1,16 @@
-.note-list {
-  float:left;
+.panel {
+  float: left;
+  border: 1px solid black;
+}
+
+.left {
+  width: 25%;
+}
+
+.center {
   width:25%;
-  border: 1px solid black;
 }
 
-.notebook-list {
-  float:left;
-  width: 28%;
-  border: 1px solid black;
-}
-
-.note-form {
-  float:left;
+.right {
   width: 45%;
-  border: 1px solid black;
 }
