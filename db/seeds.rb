@@ -21,4 +21,21 @@ ActiveRecord::Base.transaction do
     { notebook_id: 2, body: "squirrelsquirrelsquirrel"},
     { notebook_id: 4, body: "trying out the app"}
   ])
+
+  Tag.create!([
+    { user_id: 1, body: "first tag" },
+    { user_id: 1, body: "second tag" },
+    { user_id: 1, body: "hockey" },
+    { user_id: 2, body: "field hoceky" },
+    { user_id: 3, body: "not hockey, please" }
+  ])
+
+  Tagging.create!([
+    { note_id: 1, tag_id: 1 },
+    { note_id: 1, tag_id: 2 },
+    { note_id: 1, tag_id: 3 },
+    { note_id: 2, tag_id: 1 },
+    { note_id: 2, tag_id: 3 },
+    { note_id: 5, tag_id: 5 }
+  ])
 end

@@ -1,5 +1,5 @@
 NoteClipr.Collections.Notes = Backbone.Collection.extend({
-  initialize: function (objects, options) {
+  initialize: function (models, options) {
     this.notebookId = options.notebookId;
   },
 

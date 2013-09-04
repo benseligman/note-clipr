@@ -1,14 +1,12 @@
 NoteClipr.Views.NotesForm = Backbone.View.extend({
-
   initialize: function (options) {
-    var notebook = this.collection.get(options.notebook_id);
-    this.notes = notebook.get("notes");
+    this.notebook = NoteClipr.Store.notebooks.get(options.notebook_id);
+    this.notes = this.notebook.get("notes");
 
     if (options.id) {
       this.model = this.notes.get(options.id);
     } else {
       this.model = new NoteClipr.Models.Note();
-      this.model.set("notebook_id", notebook.id);
     }
   },
 
@@ -19,9 +17,9 @@ NoteClipr.Views.NotesForm = Backbone.View.extend({
   template: JST['notes/form'],
 
   render: function () {
+
     var renderedTemplate = this.template({
-      note: this.model,
-      notebooks: this.collection
+      note: this.model
     });
 
     this.$el.html(renderedTemplate);
@@ -33,24 +31,14 @@ NoteClipr.Views.NotesForm = Backbone.View.extend({
     var noteData = $(event.currentTarget).serializeJSON().note;
     noteData.id = this.model.id;
 
-    if (noteData.notebook_id != this.notes.notebookId) {
-      this.notes.remove(this.model);
-      var notebook = this.collection.get(noteData.notebook_id);
-      this.notes = notebook.get("notes");
-    }
-
     var that = this;
-    var newUrl = "/notebooks/" + noteData.notebook_id + "/notes/";
 
     this.notes.create(noteData, {
       success: function (savedNote) {
         that.notes.sort();
-        NoteClipr.Store.Router.navigate(newUrl + savedNote.id, { trigger: true});
-
+        that.remove();
       }
     });
-
-
   }
 
 });

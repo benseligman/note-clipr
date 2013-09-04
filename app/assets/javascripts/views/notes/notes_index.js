@@ -14,7 +14,6 @@ NoteClipr.Views.NotesIndex = Backbone.View.extend({
 
   render: function () {
     this.$el.html(this.template({
-      parentModel: this.model,
       collection: this.collection
     }));
 
@@ -22,17 +21,12 @@ NoteClipr.Views.NotesIndex = Backbone.View.extend({
   },
 
   update: function (event) {
-    var noteId = $(event.currentTarget).data('id');
-    this._requestNoteForm(noteId);
+     var noteId = $(event.currentTarget).data('id');
+     NoteClipr.Store.Router.navigate("#/notebooks/" + this.collection.notebookId + "/notes/" + noteId + "/edit",  { trigger: true });
   },
 
   new: function (event) {
-    this._requestNoteForm("new");
-  },
-
-  _requestNoteForm: function (noteId) {
-    var formUrl = "#/notebooks/" + this.collection.notebookId + "/notes/" + noteId;
-    NoteClipr.Store.Router.navigate(formUrl);
+    NoteClipr.Store.Router.navigate("#/notebooks/" + this.collection.notebookId + "/notes/new",  { trigger: true });
   }
 
 });

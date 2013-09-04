@@ -6,8 +6,9 @@ window.NoteClipr = {
   Store: {},
   initialize: function(currentUser, notebooksData) {
     NoteClipr.Store.currentUser = currentUser;
-
-    var notebooks = new NoteClipr.Collections.Notebooks(notebooksData, {
+    NoteClipr.Store.notes = new NoteClipr.Collections.Notes({}, {notebookId: undefined});
+    NoteClipr.Store.tags = new NoteClipr.Collections.Tags();
+    NoteClipr.Store.notebooks = new NoteClipr.Collections.Notebooks(notebooksData, {
       parse: true
     });
 
@@ -19,11 +20,11 @@ window.NoteClipr = {
     NoteClipr.Store.Router = new NoteClipr.Routers.Main({
       $notesIndex: $notesIndex,
       $notesForm: $notesForm,
-      notebooks: notebooks
+      notebooks:  NoteClipr.Store.notebooks
     });
 
 
-  var notebooksView = new NoteClipr.Views.NotebooksIndex({ collection: notebooks });
+  var notebooksView = new NoteClipr.Views.NotebooksIndex({ collection: NoteClipr.Store.notebooks });
   $notebookIndex.html(notebooksView.render().$el);
 
     Backbone.history.start();

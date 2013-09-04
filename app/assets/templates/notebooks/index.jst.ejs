@@ -1,4 +1,5 @@
 <ul id="notebook-list">
+  <li data-id="0">All Notes</li>
   <% this.collection.each(function (model) { %>
     <li data-id="<%= model.id %>">
       <%= model.escape("name") %>

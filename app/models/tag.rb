@@ -17,6 +17,6 @@ class Tag < ActiveRecord::Base
   before_validation { self.body.downcase! }
 
   belongs_to :user
-  has_many :taggings
+  has_many :taggings, :dependent => :destroy
   has_many :notes, :through => :taggings
 end

@@ -14,8 +14,11 @@ NoteClipr.Views.NotebooksForm = Backbone.View.extend({
     event.preventDefault();
 
     var notebookData = $(event.currentTarget).serializeJSON().notebook;
-    var that = this;
+    if (!notebookData.name) {
+      return;
+    }
 
+    var that = this;
     this.collection.create(notebookData, {
       success: function  () {
         that.collection.sort();
