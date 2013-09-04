@@ -22,6 +22,7 @@ NoteClipr.Routers.Main = Backbone.Router.extend({
     if (notebook_id) {
       var notebook = this.collection.get(notebook_id);
       notes = notebook.get("notes");
+
     } else {
       notes = NoteClipr.Store.notes;
     }
@@ -36,13 +37,23 @@ NoteClipr.Routers.Main = Backbone.Router.extend({
 
   noteDetailPanel: function (notebook_id, id) {
     this._removePanels();
+    var notes = this.collection.get(notebook_id).get("notes");
+    this.notesPanel(notebook_id);
+
+    var note;
+    if (id) {
+      note = notes.get(id);
+    } else {
+      note = new NoteClipr.Models.Note();
+      this.currentNotesIndex.collection.add(note);
+      NoteClipr.Store.notes.add(note);
+    }
 
     var view = new NoteClipr.Views.NotesForm({
-      notebook_id: notebook_id,
-      id: id
+      model: note
     });
 
-    this.notesPanel(notebook_id);
+
     this.currentNotesForm = view;
     this.$noteDetailPanel.html(view.render().$el);
   },

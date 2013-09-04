@@ -4,6 +4,7 @@ NoteClipr.Views.NotesIndex = Backbone.View.extend({
     var renderCallback = this.render.bind(this);
     this.listenTo(this.collection, "sync", renderCallback);
     this.listenTo(this.collection, "sort", renderCallback);
+    this.listenTo(this.collection, "change", renderCallback);
   },
 
   events: {
@@ -14,6 +15,8 @@ NoteClipr.Views.NotesIndex = Backbone.View.extend({
   template: JST['notes/index'],
 
   render: function () {
+    console.log("list notes: ");
+    console.log(this.collection);
     this.$el.html(this.template({
       collection: this.collection
     }));

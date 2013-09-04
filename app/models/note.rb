@@ -23,14 +23,14 @@ class Note < ActiveRecord::Base
   has_many :taggings
   has_many :tags, :through => :taggings
 
-  def save_with_tags!(new_tag_bodies)
-    new_tag_bodies = new_tag_bodies.nil? ? [] : new_tag_bodies.map(&:downcase)
+  def save_with_tags!(tags)
+    new_tags = new_tags.nil? ? [] : tags.select { |tag| tag.id.nil? }
+    new_tag_bodies = new_tags.map(&:downcase)
 
     Note.transaction do
       self.save!
 
       note_owner = self.owning_user
-      owner_tags = note_owner.tags
 
       new_tag_bodies.each do |new_tag_body|
         next if new_tag_body.blank? ||
