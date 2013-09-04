@@ -36,6 +36,7 @@ NoteClipr.Views.NotesForm = Backbone.View.extend({
     this.notes.create(noteData, {
       success: function (savedNote) {
         that.notes.sort();
+        NoteClipr.notes.create(savedNote);
         that.remove();
       }
     });

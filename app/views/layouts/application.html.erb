@@ -6,9 +6,14 @@
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
 </head>
-<body>
-
-<%= yield %>
-
-</body>
+  <body>
+    <%= yield %>
+    <div class="container">
+      <div class="row">
+        <div id="notebooks-tags"></div>
+        <div id="notes"></div>
+        <div id="note-detail"></div>
+      </div>
+    </div>
+  </body>
 </html>

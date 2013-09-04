@@ -1,20 +1,4 @@
 /*
 *= require_self
-*= require bootstrap
+ *= require bootstrap_and_overrides
 */
-.panel {
-  float: left;
-  border: 1px solid black;
-}
-
-.left {
-  width: 25%;
-}
-
-.center {
-  width:25%;
-}
-
-.right {
-  width: 40%;
-}

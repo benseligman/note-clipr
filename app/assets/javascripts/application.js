@@ -12,8 +12,8 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require twitter/bootstrap
 //= require serializeJSON.min.js
-//= require bootstrap
 //= require underscore
 //= require backbone
 //= require note_clipr

@@ -1,20 +1,20 @@
 NoteClipr.Routers.Main = Backbone.Router.extend({
 
   initialize: function (options) {
-    this.$notesIndex = options.$notesIndex;
-    this.$notesForm = options.$notesForm;
+    this.$notesPanel = options.$notesPanel;
+    this.$noteDetailPanel = options.$noteDetailPanel;
 
     this.collection = options.notebooks;
   },
 
   routes: {
-    "notes": "notesIndex",
-    "notebooks/:notebook_id/notes": "notesIndex",
-    "notebooks/:notebook_id/notes/new": "notesForm",
-    "notebooks/:notebook_id/notes/:id/edit": "notesForm"
+    "notes": "notesPanel",
+    "notebooks/:notebook_id/notes": "notesPanel",
+    "notebooks/:notebook_id/notes/new": "noteDetailPanel",
+    "notebooks/:notebook_id/notes/:id/edit": "noteDetailPanel"
   },
 
-  notesIndex: function (notebook_id) {
+  notesPanel: function (notebook_id) {
     this._removePanels();
 
     var notes;
@@ -31,10 +31,10 @@ NoteClipr.Routers.Main = Backbone.Router.extend({
     });
 
     this.currentNotesIndex = view;
-    this.$notesIndex.html(view.render().$el);
+    this.$notesPanel.html(view.render().$el);
   },
 
-  notesForm: function (notebook_id, id) {
+  noteDetailPanel: function (notebook_id, id) {
     this._removePanels();
 
     var view = new NoteClipr.Views.NotesForm({
@@ -42,9 +42,9 @@ NoteClipr.Routers.Main = Backbone.Router.extend({
       id: id
     });
 
-    this.notesIndex(notebook_id);
+    this.notesPanel(notebook_id);
     this.currentNotesForm = view;
-    this.$notesForm.html(view.render().$el);
+    this.$noteDetailPanel.html(view.render().$el);
   },
 
   _removePanels: function () {

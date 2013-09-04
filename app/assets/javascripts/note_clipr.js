@@ -12,18 +12,18 @@ window.NoteClipr = {
       parse: true
     });
 
-    var $notebookIndex = $("<div>");
-    var $tagsIndex = $("<div>");
-    var $staticPanel = $("<div class='panel left'>");
-    $staticPanel.append($notebookIndex).append($tagsIndex);
+    var $notebooksTagsPanel = $("div#notebooks-tags");
+    var $notebooksPanel = $("<div class='row'>");
+    var $tagsPanel = $("<div class='row'>");
+    $notebooksTagsPanel.append($notebooksPanel).append($tagsPanel);
 
-    var $notesIndex = $("<div class='panel center'>");
-    var $notesForm = $("<div class='panel right'>");
-    $("body").append($staticPanel).append($notesIndex).append($notesForm);
+    var $notesPanel = $("div#notes");
+    var $noteDetailPanel = $("div#note-detail");
+
 
     NoteClipr.Store.Router = new NoteClipr.Routers.Main({
-      $notesIndex: $notesIndex,
-      $notesForm: $notesForm,
+      $notesPanel: $notesPanel,
+      $noteDetailPanel: $noteDetailPanel,
       notebooks:  NoteClipr.Store.notebooks
     });
 
@@ -31,12 +31,12 @@ window.NoteClipr = {
   var notebooksView = new NoteClipr.Views.NotebooksIndex({
     collection: NoteClipr.Store.notebooks
   });
-  $notebookIndex.html(notebooksView.render().$el);
+  $notebooksPanel.html(notebooksView.render().$el);
 
   var tagsView = new NoteClipr.Views.TagsIndex({
     collection: NoteClipr.Store.tags
   });
-  $tagsIndex.html(tagsView.render().$el);
+  $tagsPanel.html(tagsView.render().$el);
 
   Backbone.history.start();
   }
