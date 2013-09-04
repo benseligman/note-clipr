@@ -1,8 +1,9 @@
 NoteClipr.Views.NotesIndex = Backbone.View.extend({
 
-  initialize: function () {
+  initialize: function (options) {
+
+    this.notebook_id = options.notebook_id;
     var renderCallback = this.render.bind(this);
-    this.listenTo(this.collection, "sync", renderCallback);
     this.listenTo(this.collection, "sort", renderCallback);
     this.listenTo(this.collection, "change", renderCallback);
   },
@@ -15,10 +16,9 @@ NoteClipr.Views.NotesIndex = Backbone.View.extend({
   template: JST['notes/index'],
 
   render: function () {
-    console.log("list notes: ");
-    console.log(this.collection);
     this.$el.html(this.template({
-      collection: this.collection
+      collection: this.collection,
+      inNotebook: !!(this.notebook_id)
     }));
 
     return this;
@@ -26,12 +26,12 @@ NoteClipr.Views.NotesIndex = Backbone.View.extend({
 
   update: function (event) {
      var noteId = $(event.currentTarget).data('id');
-     var note = this.collection.get(noteId)
-     NoteClipr.Store.Router.navigate("#/notebooks/" + note.get("notebook_id") + "/notes/" + noteId + "/edit",  { trigger: true });
+     var note = this.collection.get(noteId);
+     NoteClipr.Store.Router.navigate("#/notes/" + noteId + "/edit",  { trigger: true });
   },
 
   new: function (event) {
-    NoteClipr.Store.Router.navigate("#/notebooks/" + this.collection.notebookId + "/notes/new",  { trigger: true });
+    NoteClipr.Store.Router.navigate("#/notebooks/" + this.notebook_id + "/notes/new",  { trigger: true });
   }
 
 });

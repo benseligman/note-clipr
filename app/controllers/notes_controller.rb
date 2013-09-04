@@ -12,7 +12,6 @@ class NotesController < ApplicationController
 
   def create
     @note = Note.new(params[:note])
-    @note.notebook_id = params[:notebook_id]
 
     if @note.save_with_tags!(params[:tags])
       render :json => @note

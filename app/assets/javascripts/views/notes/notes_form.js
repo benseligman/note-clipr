@@ -23,6 +23,8 @@ NoteClipr.Views.NotesForm = Backbone.View.extend({
       success: function (savedNote) {
         that.model.collection.sort();
         that.remove();
+        var newUrl = "#/notebooks/" + that.model.get("notebook_id") + "/notes";
+        NoteClipr.Store.Router.navigate(newUrl);
       }
     });
   }

@@ -4,7 +4,8 @@ NoteClipr::Application.routes.draw do
   resource :session, :only => [:new, :create, :destroy]
 
   resources :notebooks, :only => [:index, :create] do
-    resources :notes, :only => [:index, :create, :update]
+
   end
+  resources :notes, :only => [:index, :create, :update]
 
 end
