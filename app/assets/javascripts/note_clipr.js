@@ -6,7 +6,7 @@ window.NoteClipr = {
   Store: {},
   initialize: function(currentUser, notebooksData) {
     NoteClipr.Store.currentUser = currentUser;
-    NoteClipr.Store.notes = new NoteClipr.Collections.Notes({}, {notebookId: undefined});
+    NoteClipr.Store.notes = new NoteClipr.Collections.Notes(null, {notebookId: undefined});
     NoteClipr.Store.tags = new NoteClipr.Collections.Tags();
     NoteClipr.Store.notebooks = new NoteClipr.Collections.Notebooks(notebooksData, {
       parse: true

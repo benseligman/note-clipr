@@ -22,7 +22,6 @@ NoteClipr.Routers.Main = Backbone.Router.extend({
     if (notebook_id) {
       var notebook = this.collection.get(notebook_id);
       notes = notebook.get("notes");
-
     } else {
       notes = NoteClipr.Store.notes;
     }
@@ -52,7 +51,6 @@ NoteClipr.Routers.Main = Backbone.Router.extend({
     var view = new NoteClipr.Views.NotesForm({
       model: note
     });
-
 
     this.currentNotesForm = view;
     this.$noteDetailPanel.html(view.render().$el);
