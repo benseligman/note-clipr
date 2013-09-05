@@ -9,6 +9,10 @@ gem 'bcrypt-ruby'
 gem 'rabl'
 gem 'rich'
 gem 'formtastic'
+gem 'kaminari'
+gem 'paperclip'
+gem 'aws-sdk'
+gem 'figaro'
 
 
 # Gems used only for assets and not required
