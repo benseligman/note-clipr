@@ -1,5 +1,5 @@
 <script type="text/json" id="bootstrapped-notebooks">
-  <%= render(:file => 'notebooks/index', :formats => [:json], :locals => { :notebooks => self.current_user.notebooks.includes(:notes) }) %>
+  <%= render(:file => 'notebooks/index', :formats => [:json], :locals => { :notebooks => self.current_user.notebooks.includes(:notes => [:tags]) }) %>
 </script>
 
 <script type="text/json" id="bootstrapped-user">

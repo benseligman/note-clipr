@@ -8,8 +8,7 @@ gem 'backbone-on-rails'
 gem 'bcrypt-ruby'
 gem 'rabl'
 gem 'rich'
-gem 'formtastic'
-gem 'kaminari'
+gem 'kaminari' # support pagination in rich file manager
 gem 'paperclip'
 gem 'aws-sdk'
 gem 'figaro'
@@ -26,8 +25,8 @@ group :assets do
 
   gem 'uglifier', '>= 1.0.3'
   gem 'twitter-bootstrap-rails'
-  gem 'therubyracer'
-  gem 'less-rails'
+  gem 'therubyracer' # support less
+  gem 'less-rails' # support bootstrap
 end
 
 group :development do

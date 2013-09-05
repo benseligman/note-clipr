@@ -11,11 +11,9 @@ NoteClipr.Views.NotesForm = Backbone.View.extend({
       note: this.model
     });
 
-
     this.$el.html(renderedTemplate);
 
     CKEDITOR.replace(this.$el.find('#note_body').get(0), {"height":400,"stylesSet":[],"extraPlugins":"stylesheetparser,richfile,MediaEmbed","removePlugins":"scayt,menubutton,image,forms","contentsCss":"/assets/rich/editor.css","removeDialogTabs":"link:advanced;link:target","forcePasteAsPlainText":true,"format_tags":"h3;p;pre","toolbar":[["Format","Styles"],["Bold","Italic","-","NumberedList","BulletedList","Blockquote","-","richImage","-","Link","Unlink"],["Source","ShowBlocks"]],"language":"en","richBrowserUrl":"/rich/files/","uiColor":"#f4f4f4","allowed_styles":["thumb","rich_thumb","original"],"default_style":"thumb","insert_many":false,"allow_document_uploads":false,"allow_embeds":false,"placeholder_image":"data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==","preview_size":"100px","hidden_input":false});
-
     CKEDITOR.instances.note_body.setData(this.model.get("body"));
 
     return this;

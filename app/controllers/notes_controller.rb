@@ -3,10 +3,6 @@ class NotesController < ApplicationController
     @notes = Note.all
   end
 
-  def new
-    @note = Note.new()
-  end
-
   def update
     @note = Note.find_by_id(params[:id])
     @note.assign_attributes(params[:note])
