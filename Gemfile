@@ -7,6 +7,8 @@ gem 'jquery-rails'
 gem 'backbone-on-rails'
 gem 'bcrypt-ruby'
 gem 'rabl'
+gem 'rich'
+gem 'formtastic'
 
 
 # Gems used only for assets and not required

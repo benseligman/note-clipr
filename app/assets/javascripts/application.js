@@ -16,6 +16,7 @@
 //= require serializeJSON.min.js
 //= require underscore
 //= require backbone
+//= require rich
 //= require note_clipr
 //= require_tree ../templates
 //= require_tree ./models
