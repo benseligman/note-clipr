@@ -34,4 +34,13 @@ NoteClipr::Application.configure do
 
   # Expands the lines which load the assets
   config.assets.debug = true
+
+  config.paperclip_defaults = {
+    :storage => :s3,
+    :s3_credentials => {
+      :bucket => "NoteClipr-Dev",
+      :access_key_id => ENV["AWS_ACCESS_KEY"],
+      :secret_access_key => ENV["AWS_SECRET_ACCESS_KEY"]
+    }
+  }
 end
