@@ -28,17 +28,18 @@ window.NoteClipr = {
     });
 
 
-  var notebooksView = new NoteClipr.Views.NotebooksIndex({
-    collection: NoteClipr.Store.notebooks
-  });
-  $notebooksPanel.html(notebooksView.render().$el);
+    var notebooksView = new NoteClipr.Views.NotebooksIndex({
+      collection: NoteClipr.Store.notebooks
+    });
+    $notebooksPanel.html(notebooksView.render().$el);
 
-  var tagsView = new NoteClipr.Views.TagsIndex({
-    collection: NoteClipr.Store.tags
-  });
+    var tagsView = new NoteClipr.Views.TagsIndex({
+      collection: NoteClipr.Store.tags
+    });
 
-  $tagsPanel.html(tagsView.render().$el);
+    $tagsPanel.html(tagsView.render().$el);
 
-  Backbone.history.start();
+    Backbone.history.start();
+    NoteClipr.Store.Router.navigate("#/notes");
   }
 };
