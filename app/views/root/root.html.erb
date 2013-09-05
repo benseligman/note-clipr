@@ -1,7 +1,20 @@
+<script type="text/json" id="bootstrapped-notebooks">
+  <%= render(:file => 'notebooks/index', :formats => [:json], :locals => { :notebooks => self.current_user.notebooks.includes(:notes) }) %>
+</script>
+
+<script type="text/json" id="bootstrapped-user">
+  <%= self.current_user.to_json %>
+</script>
+
 <script type="text/javascript">
   $(function () {
-    var currentUser = <%= self.current_user.to_json.html_safe %>;
-    var notebooksData = <%= render(:file => 'notebooks/index', :formats => [:json], :locals => { :notebooks => self.current_user.notebooks.includes(:notes) }).html_safe %>
+    var notebookDiv = $("<div>");
+    notebookDiv.html($("#bootstrapped-notebooks").text());
+    var notebooksData = JSON.parse(notebookDiv.text());
+
+   var userDiv = $("<div>");
+   userDiv.html($("#bootstrapped-user").text());
+   var currentUser = JSON.parse(userDiv.text());
 
     NoteClipr.initialize(currentUser, notebooksData);
   });
