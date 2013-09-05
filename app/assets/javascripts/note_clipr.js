@@ -13,8 +13,8 @@ window.NoteClipr = {
     });
 
     var $notebooksTagsPanel = $("div#notebooks-tags");
-    var $notebooksPanel = $("<div class='row'>");
-    var $tagsPanel = $("<div class='row'>");
+    var $notebooksPanel = $("<div>");
+    var $tagsPanel = $("<div>");
     $notebooksTagsPanel.append($notebooksPanel).append($tagsPanel);
 
     var $notesPanel = $("div#notes");

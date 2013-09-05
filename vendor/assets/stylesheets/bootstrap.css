@@ -169,7 +169,7 @@ select {
 button,
 html input[type="button"],
 input[type="reset"],
-input[type="submit"] {
+input[type="submit" class="btn"] {
   cursor: pointer;
   -webkit-appearance: button;
 }
@@ -2351,7 +2351,7 @@ fieldset[disabled] .btn-link:focus {
   margin-top: 5px;
 }
 
-input[type="submit"].btn-block,
+input[type="submit" class="btn"].btn-block,
 input[type="reset"].btn-block,
 input[type="button"].btn-block {
   width: 100%;
