@@ -7,7 +7,7 @@ NoteClipr.Views.TagsIndexForNote = Backbone.View.extend({
   },
 
   events: {
-    "click ul#note-tag-list li": "removeTag"
+    "click div#note-tag-list span": "removeTag"
   },
 
   template: JST['tags/index_for_note'],

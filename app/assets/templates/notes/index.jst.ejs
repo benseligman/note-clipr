@@ -2,6 +2,7 @@
 <% if (inNotebook) {%>
   <button id="new-note" class="btn" type="Submit">Add a Note!</button>
 <% } %>
+
 <ul id="notes-index">
   <% collection.each(function (model) { %>
       <li data-id="<%= model.id %>">

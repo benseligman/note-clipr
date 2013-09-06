@@ -11,7 +11,9 @@ window.NoteClipr = {
     NoteClipr.Store.notebooks = new NoteClipr.Collections.Notebooks(notebooksData, {
       parse: true
     });
+    NoteClipr.Store.searchTerms = "";
 
+    var $searchPanel = $("div#search");
     var $notebooksTagsPanel = $("div#notebooks-tags");
     var $notebooksPanel = $("<div>");
     var $tagsPanel = $("<div>");
@@ -27,6 +29,10 @@ window.NoteClipr = {
       notebooks:  NoteClipr.Store.notebooks
     });
 
+    var searchView = new NoteClipr.Views.NotesSearch( {
+      collection: NoteClipr.Store.notes
+    });
+    $searchPanel.html(searchView.render().$el);
 
     var notebooksView = new NoteClipr.Views.NotebooksIndex({
       collection: NoteClipr.Store.notebooks

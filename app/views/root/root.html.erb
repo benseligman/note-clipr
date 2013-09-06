@@ -1,3 +1,11 @@
+<div class="container">
+  <div class="row" id="search"></div>
+  <div class="row">
+    <div class="span3 column" id="notebooks-tags"></div>
+    <div class="span3 column" id="notes"></div>
+    <div class="span6 column" id="note-detail"></div>
+  </div>
+</div>
 <script type="text/json" id="bootstrapped-notebooks">
   <%= render(:file => 'notebooks/index', :formats => [:json], :locals => { :notebooks => self.current_user.notebooks.includes(:notes => [:tags]) }) %>
 </script>

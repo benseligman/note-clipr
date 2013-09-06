@@ -10,6 +10,14 @@ NoteClipr.Collections.Notes = Backbone.Collection.extend({
     return -Date.parse(model.get("updated_at"));
   },
 
+  searchFilter: function () {
+    var filtered = this.filter(function (note) {
+      return note.get("matchesSearch");
+    });
+
+    return new NoteClipr.Collections.Notes(filtered);
+  },
+
   tagFilter: function (tags) {
     if (tags.length === 0) {
       return this;

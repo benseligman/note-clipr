@@ -16,7 +16,7 @@ NoteClipr.Routers.Main = Backbone.Router.extend({
   },
 
   notesRedirect: function () {
-    NoteClipr.Store.Router.navigate("#/notes")
+    NoteClipr.Store.Router.navigate("#/notes");
   },
 
   notesPanel: function (notebook_id) {

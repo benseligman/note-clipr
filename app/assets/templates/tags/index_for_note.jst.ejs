@@ -1,8 +1,8 @@
-<label for="note-tag-list">Current Tags</label>
-<ul id="note-tag-list">
+<div id="note-tag-list">
+  <strong>Tags: </strong>
   <% tags.each(function (tag) { %>
-    <li data-id="<%= tag.id %>">
+    <span class="tagging" data-id="<%= tag.id %>">
       <%= tag.escape("body") %>
-    </li>
+    </span>
   <% }) %>
-</ul>
+</div>

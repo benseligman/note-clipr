@@ -18,7 +18,7 @@ NoteClipr.Views.NotesIndex = Backbone.View.extend({
 
   render: function () {
     var activeTags = NoteClipr.Store.tags.activeOnly();
-    var filteredNotes = this.collection.tagFilter(activeTags);
+    var filteredNotes = this.collection.tagFilter(activeTags).searchFilter();
 
     this.$el.html(this.template({
       collection: filteredNotes,

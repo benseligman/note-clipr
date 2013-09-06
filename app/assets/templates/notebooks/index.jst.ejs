@@ -2,7 +2,7 @@
   <li data-id="0">All Notes</li>
   <% this.collection.each(function (model) { %>
     <li data-id="<%= model.id %>">
-      <%= model.escape("name") %>
+      <%= model.escape("name") %> (<%= model.collection.length %>)
     </li>
   <% }); %>
 </ul>
