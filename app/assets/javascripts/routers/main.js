@@ -8,10 +8,15 @@ NoteClipr.Routers.Main = Backbone.Router.extend({
   },
 
   routes: {
+    "": "notesRedirect",
     "notes": "notesPanel",
     "notebooks/:notebook_id/notes": "notesPanel",
     "notebooks/:notebook_id/notes/new": "newNoteDetailPanel",
     "notes/:id/edit": "updateNoteDetailPanel"
+  },
+
+  notesRedirect: function () {
+    NoteClipr.Store.Router.navigate("#/notes")
   },
 
   notesPanel: function (notebook_id) {

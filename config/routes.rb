@@ -7,5 +7,5 @@ NoteClipr::Application.routes.draw do
 
   resources :notebooks, :only => [:create]
   resources :notes, :only => [:create, :update]
-
+  resource :tagging, :only => [:destroy]
 end

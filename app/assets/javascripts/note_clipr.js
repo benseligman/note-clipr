@@ -40,6 +40,5 @@ window.NoteClipr = {
     $tagsPanel.html(tagsView.render().$el);
 
     Backbone.history.start();
-    NoteClipr.Store.Router.navigate("#/notes");
   }
 };

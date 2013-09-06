@@ -13,13 +13,5 @@
   <label for="tags">Add Tags (separate by spaces)</label>
   <input type="text" name="tags" id="tags">
 
-
-  <label for="note-tag-list">Current Tags</label>
-  <ul id="note-tag-list">
-    <% note.get("tags").each(function (tag) { %>
-      <li><%= tag.escape("body") %></li>
-    <% }) %>
-  </ul>
-
   <input type="submit" class="btn" value="Save Note">
 </form>
