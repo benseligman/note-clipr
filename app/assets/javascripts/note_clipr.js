@@ -13,7 +13,7 @@ window.NoteClipr = {
     });
     NoteClipr.Store.searchTerms = "";
 
-    var $searchPanel = $("div#search");
+    var $searchPanel = $("div.navbar-search");
     var $notebooksTagsPanel = $("div#notebooks-tags");
     var $notebooksPanel = $("<div>");
     var $tagsPanel = $("<div>");

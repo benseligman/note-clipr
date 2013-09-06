@@ -1,5 +1,6 @@
 class SessionsController < ApplicationController
-  before_filter :require_no_logged_in_user!
+  before_filter :require_no_logged_in_user!, :only => [:create, :new]
+  before_filter :require_logged_in_user!, :only => [:destroy]
 
   def new
     render :new
@@ -19,5 +20,6 @@ class SessionsController < ApplicationController
 
   def destroy
     log_out
+    redirect_to :root
   end
 end

@@ -32,7 +32,8 @@ NoteClipr.Views.NotesSearch = Backbone.View.extend({
   },
 
   applySearch: function () {
-    var searchTerms = $("input.search-query").val(); //fix
+    var targetEl = this.$el.find("input.search-query").get(0);
+    var searchTerms = $(targetEl).val();
 
     var that = this;
     if (searchTerms.replace(/ /g, "")) {
