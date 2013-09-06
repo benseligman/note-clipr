@@ -12,6 +12,7 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require jquery.timeago
 //= require twitter/bootstrap
 //= require serializeJSON.min.js
 //= require underscore

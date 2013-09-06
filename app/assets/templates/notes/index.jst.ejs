@@ -5,7 +5,9 @@
 <ul id="notes-index">
   <% collection.each(function (model) { %>
       <li data-id="<%= model.id %>">
-        <%= model.escape("title") || "Untitled" %>
+        <strong><%= model.escape("title") || "Untitled" %></strong>
+        <br>
+        Last updated: <%= model.get("updated_at") ? $.timeago(model.get("updated_at")) : "" %>
       </li>
   <% }); %>
 </ul>
