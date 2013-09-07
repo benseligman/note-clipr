@@ -9,7 +9,7 @@ NoteClipr.Collections.Tags = Backbone.Collection.extend({
   },
 
   comparator: function (tag) {
-    return tag.body;
+    return tag.get("body");
   }
 
 });

@@ -2,6 +2,7 @@ NoteClipr.Views.NotebooksIndex = Backbone.View.extend({
   initialize: function  () {
     var renderCallback = this.render.bind(this);
     this.listenTo(this.collection, "sort", renderCallback);
+    this.listenTo(NoteClipr.Store.notes, "change", renderCallback);
   },
 
   events: {
@@ -16,7 +17,7 @@ NoteClipr.Views.NotebooksIndex = Backbone.View.extend({
     });
     var subView = newForm.render().$el;
 
-    this.$el.append(subView);
+    this.$el.html(subView);
     this.$el.append(this.template({
       collection: this.collection
     }));

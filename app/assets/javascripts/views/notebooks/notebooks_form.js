@@ -18,6 +18,7 @@ NoteClipr.Views.NotebooksForm = Backbone.View.extend({
       return;
     }
 
+    notebookData.notes = new NoteClipr.Collections.Notes();
     var that = this;
     this.collection.create(notebookData, {
       success: function  () {
