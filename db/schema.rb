@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130905172338) do
+ActiveRecord::Schema.define(:version => 20130907204900) do
 
   create_table "notebooks", :force => true do |t|
     t.integer  "user_id",    :null => false
@@ -26,9 +26,6 @@ ActiveRecord::Schema.define(:version => 20130905172338) do
   create_table "notes", :force => true do |t|
     t.integer  "notebook_id", :null => false
     t.string   "title"
-    t.string   "location"
-    t.string   "url"
-    t.string   "author"
     t.text     "body"
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false

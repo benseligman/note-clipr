@@ -14,7 +14,7 @@
 #
 
 class Note < ActiveRecord::Base
-  attr_accessible :author, :body, :location, :notebook_id, :title, :url
+  attr_accessible :body, :notebook_id, :title
 
   validates :notebook_id, :presence => true
 

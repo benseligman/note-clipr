@@ -1,17 +1,20 @@
 <form id="note-edit" data-id="<%= note.id %>">
-
-  <label for="note-title">Title</label>
-  <input type="text" name="note[title]" class="input-block-level" id="note-title" value="<%= note.escape("title") %>" placeholder="Untitled">
-
-  <label class="hidden" for="note-url">URL</label>
-  <input type="text" name="note[url]" class="input-block-level" id="note-url" value="<%= note.escape("url") %>" placeholder="URL">
-
-  <label for="note-body">Body</label>
-  <textarea id="note_body" name="note[body]" rows="20" value="<%= note.body %>"></textarea>
+  <div class="form-group">
+    <label for="note-title" class="hidden">Title</label>
+    <input type="text" name="note[title]" class="form-control input-lg" id="note-title" value="<%= note.escape("title") %>" placeholder="Untitled">
+  </div>
+  <div id="tag-list"></div>
   <br>
 
-  <label for="tags">Add Tags (separate by spaces)</label>
-  <input type="text" name="tags" id="tags">
+  <div class="form-group">
+    <label for="note-body" class="hidden">Body</label>
+    <textarea id="note_body" name="note[body]" rows="20" value="<%= note.body %>"></textarea>
+  </div>
+
+  <div class="form-group">
+    <label for="tags" class="hidden">Add Tags (separate by spaces): </label>
+    <input type="text" class="form-control" name="tags" id="tags" placeholder="Add Tags (separate by spaces):">
+  </div>
 
   <input type="submit" class="btn" value="Save Note">
 </form>
