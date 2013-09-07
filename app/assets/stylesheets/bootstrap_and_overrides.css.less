@@ -29,8 +29,20 @@
 // Example:
 // @linkColor: #ff0000;
 
+.navbar-inner {
+  -webkit-border-radius: 0;
+  -moz-border-radius: 0;
+  border-radius: 0;
+}
+
+.fill {
+  position: relative;
+  height: 100%;
+}
+
 .column {
-  .border-radius( 5px );
+
+  overflow-y: auto;
   background-color: rgb(177, 204, 199);
   height: 100%;
 }
@@ -44,18 +56,10 @@
   cursor: default;
 }
 
-#notebooks-tags {
-  .makeColumn(3)
-}
-
-#notes {
-  .makeColumn(3)
-}
-
-#note-detail {
-  .makeColumn(6)
-}
-
 .active {
   font-weight:bold;
+}
+
+.hidden {
+  display:none;
 }

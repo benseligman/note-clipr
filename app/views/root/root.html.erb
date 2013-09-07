@@ -1,9 +1,27 @@
-<div class="container">
-  <div class="row" id="search"></div>
+<div class="container fill">
   <div class="row">
-    <div class="span3 column" id="notebooks-tags"></div>
-    <div class="span3 column" id="notes"></div>
-    <div class="span6 column" id="note-detail"></div>
+    <div class="col-md-3">
+      <div class="panel panel-default">
+        <div class="panel-heading">Notebooks</div>
+        <div class="panel-body" id="notebooks"></div>
+      </div>
+      <div class="panel panel-default">
+        <div class="panel-heading">Tags</div>
+        <div class="panel-body" id="tags"></div>
+      </div>
+    </div>
+    <div class="col-md-3">
+      <div class="panel panel-default">
+        <div class="panel-heading">Notes</div>
+        <div class="panel-body" id="notes"></div>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <div class="panel panel-default">
+        <div class="panel-heading">View</div>
+        <div class="panel-body" id="note-detail"></div>
+      </div>
+    </div>
   </div>
 </div>
 <script type="text/json" id="bootstrapped-notebooks">

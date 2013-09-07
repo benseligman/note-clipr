@@ -14,11 +14,8 @@ window.NoteClipr = {
     NoteClipr.Store.searchTerms = "";
 
     var $searchPanel = $("div.navbar-search");
-    var $notebooksTagsPanel = $("div#notebooks-tags");
-    var $notebooksPanel = $("<div>");
-    var $tagsPanel = $("<div>");
-    $notebooksTagsPanel.append($notebooksPanel).append($tagsPanel);
-
+    var $notebooksPanel = $("div#notebooks");
+    var $tagsPanel = $("div#tags");
     var $notesPanel = $("div#notes");
     var $noteDetailPanel = $("div#note-detail");
 

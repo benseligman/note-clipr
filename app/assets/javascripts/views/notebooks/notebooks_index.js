@@ -16,7 +16,6 @@ NoteClipr.Views.NotebooksIndex = Backbone.View.extend({
     });
     var subView = newForm.render().$el;
 
-    this.$el.html("<h1>Notebooks</h1>");
     this.$el.append(subView);
     this.$el.append(this.template({
       collection: this.collection
