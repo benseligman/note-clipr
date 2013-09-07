@@ -210,5 +210,5 @@ DEPENDENCIES
   rich
   sass-rails (~> 3.2.3)
   therubyracer
-  twitter-bootstrap-rails
+  twitter-bootstrap-rails (~> 2.0rc0)
   uglifier (>= 1.0.3)

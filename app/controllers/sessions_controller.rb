@@ -13,7 +13,7 @@ class SessionsController < ApplicationController
       log_in(@user)
       redirect_to root_url
     else
-      flash.now["alert"] = "Invalid username/password combindation."
+      flash.now["alert"] = "Invalid username/password combination."
       render :new
     end
   end
