@@ -10,14 +10,17 @@
 // WARNING: THE FIRST BLANK LINE MARKS THE END OF WHAT'S TO BE PROCESSED, ANY BLANK LINE SHOULD
 // GO AFTER THE REQUIRES BELOW.
 //
+// Vendor Libraries
 //= require jquery
 //= require jquery_ujs
 //= require jquery.timeago
-//= require twitter/bootstrap
-//= require serializeJSON.min.js
+//= require serializeJSON.min
+//= require typeahead
 //= require underscore
 //= require backbone
 //= require rich
+//
+//  App Javascripts
 //= require note_clipr
 //= require_tree ../templates
 //= require_tree ./models

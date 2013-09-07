@@ -14,7 +14,7 @@ class UsersController < ApplicationController
       log_in(@user)
       redirect_to root_url
     else
-      flash.now["alert-error"] = @user.errors.full_messages.join(" <br> ")
+      flash.now["danger"] = @user.errors.full_messages.join(" <br> ")
       render :new
     end
   end

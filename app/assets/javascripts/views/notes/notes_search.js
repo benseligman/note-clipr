@@ -1,13 +1,15 @@
 NoteClipr.Views.NotesSearch = Backbone.View.extend({
-  initialize: function () {
-    // applies search every half-second
-    setInterval(this.applySearch.bind(this), 500);
+
+  events: {
+    "submit": "preventSubmission",
+    "keyup": "applySearch"
   },
 
   template: JST['notes/search'],
 
   render: function () {
     this.$el.html(this.template());
+    this.$el.addClass("form-group");
     this.addTypeahead();
     return this;
   },
@@ -21,18 +23,13 @@ NoteClipr.Views.NotesSearch = Backbone.View.extend({
 
     var that = this;
 
-    this.$el.find(".search-query").typeahead({
-      source: noteTitles,
-      //apply search when typeahead is sorted. Doesn't refresh when bar is empty.
-      sorter: function (item) {
-        that.applySearch();
-        return item;
-      }
+    this.$el.find("input#search-text").typeahead({
+      local: noteTitles
     });
   },
 
   applySearch: function () {
-    var targetEl = this.$el.find("input.search-query").get(0);
+    var targetEl = this.$el.find("input#search-text").get(0);
     var searchTerms = $(targetEl).val();
 
     var that = this;
@@ -51,5 +48,9 @@ NoteClipr.Views.NotesSearch = Backbone.View.extend({
     var re = new RegExp(".*" + searchTerms + ".*", "i");
     var title = note.get("title") || "";
     return !!title.match(re);
+  },
+
+  preventSubmission: function (event) {
+    event.preventDefault();
   }
 });
