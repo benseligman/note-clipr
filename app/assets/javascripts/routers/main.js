@@ -19,9 +19,8 @@ NoteClipr.Routers.Main = Backbone.Router.extend({
     NoteClipr.Store.Router.navigate("#/notes");
   },
 
-  notesPanel: function (notebook_id) {
+  notesPanel: function (notebook_id, activeNote) {
     this._removePanels();
-
     var notes;
 
     if (notebook_id) {
@@ -33,7 +32,8 @@ NoteClipr.Routers.Main = Backbone.Router.extend({
 
     var view = new NoteClipr.Views.NotesIndex({
       collection: notes,
-      notebook_id: notebook_id
+      notebook_id: notebook_id,
+      activeNote: activeNote
     });
 
     this.currentNotesIndex = view;
@@ -61,7 +61,7 @@ NoteClipr.Routers.Main = Backbone.Router.extend({
 
   _noteDetailPanel: function (note) {
     this._removePanels();
-    this.notesPanel(note.get("notebook_id"));
+    this.notesPanel(note.get("notebook_id"), note.get("id"));
 
     var view = new NoteClipr.Views.NotesForm({
       model: note

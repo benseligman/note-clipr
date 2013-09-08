@@ -3,6 +3,7 @@ NoteClipr.Views.NotesIndex = Backbone.View.extend({
   initialize: function (options) {
 
     this.notebook_id = options.notebook_id;
+    this.activeNote = options.activeNote;
     var renderCallback = this.render.bind(this);
     this.listenTo(this.collection, "sort", renderCallback);
     this.listenTo(this.collection, "change", renderCallback);
@@ -24,15 +25,17 @@ NoteClipr.Views.NotesIndex = Backbone.View.extend({
 
     this.$el.html(this.template({
       collection: filteredNotes,
-      inNotebook: !!(this.notebook_id)
+      inNotebook: !!(this.notebook_id),
+      activeNote: this.activeNote
     }));
 
     return this;
   },
 
   update: function (event) {
-     var noteId = $(event.currentTarget).data('id');
-     var note = this.collection.get(noteId);
+     var $target = $(event.currentTarget);
+     var noteId = $target.data('id');
+
      NoteClipr.Store.Router.navigate("#/notes/" + noteId + "/edit",  { trigger: true });
   },
 
@@ -47,5 +50,4 @@ NoteClipr.Views.NotesIndex = Backbone.View.extend({
   removeHighlight: function (event) {
     $(event.currentTarget).removeClass("highlighted");
   }
-
 });

@@ -27,7 +27,10 @@ NoteClipr.Views.NotebooksIndex = Backbone.View.extend({
   },
 
   showNotesIndex: function (event) {
-    var notebookId = $(event.currentTarget).data('id');
+    var $target = $(event.currentTarget);
+    var notebookId = $target.data('id');
+    this._swapActiveNotebook($target);
+
     var formUrl;
     if (notebookId) {
       formUrl = "#/notebooks/" + notebookId + "/notes";
@@ -43,5 +46,11 @@ NoteClipr.Views.NotebooksIndex = Backbone.View.extend({
 
   removeHighlight: function (event) {
     $(event.currentTarget).removeClass("highlighted");
+  },
+
+  _swapActiveNotebook: function ($target) {
+    this.$activeEl && this.$activeEl.removeClass("active");
+    $target.addClass("active");
+    this.$activeEl = $target;
   }
 });
