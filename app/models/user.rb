@@ -39,7 +39,7 @@ class User < ActiveRecord::Base
   before_validation { self.email.downcase!; self.username.downcase! }
   before_save { encrypt_password unless self.password.nil? }
 
-  has_many :notebooks
+  has_many :notebooks, :dependent => :destroy
   has_many :notes, :through => :notebooks
 
   has_many :tags

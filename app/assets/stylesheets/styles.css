@@ -18,8 +18,11 @@
 }
 
 .active {
-  background-color: rgb(200, 200, 200);
-  /*background-color: rgba(100, 100, 100, 0.5);*/
+  background-color: rgb(209, 211, 214);
+}
+
+.highlighted {
+  background-color: rgb(237, 239, 242);
 }
 
 .hidden {
@@ -45,9 +48,6 @@ button {
 }
 
 .deemphasized {
-  color: rgb(152, 152, 152);
+  color: rgb(105, 140, 179);
 }
 
-.highlighted {
-  background-color: rgb(220, 220, 220);
-}

@@ -6,7 +6,7 @@
   <% collection.each(function (model) { %>
       <% var activeClass = (model.id == activeNote) ? "active" : ""%>
       <div data-id="<%= model.id %>" class="list-item <%= activeClass %>">
-        <strong><%= model.escape("title") || "Untitled" %></strong>
+        <strong><%= model.escape("title") || "Untitled" %></strong><span data-id="<%= model.id %>" class="glyphicon glyphicon-trash pull-right"></span>
         <br>
         <span class="deemphasized"><%= model.get("updated_at") ? $.timeago(model.get("updated_at")) : "" %></span>
       </div>

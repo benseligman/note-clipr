@@ -18,14 +18,14 @@ class Note < ActiveRecord::Base
 
   belongs_to :notebook
   has_one :owning_user, :through => :notebook, :source => :user
-  has_many :taggings
+  has_many :taggings, :dependent => :destroy
   has_many :tags, :through => :taggings
-  has_one :note_share
+  has_one :note_share, :dependent => :destroy
 
   before_save :sanitize_note_body
 
   def shared?
-    !!note_share
+    !!self.note_share
   end
 
   def save_with_tags!(tagStr)

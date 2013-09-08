@@ -4,6 +4,16 @@ class NotesController < ApplicationController
     @notes = Note.all
   end
 
+  def destroy
+    @note = Note.find_by_id(params[:id])
+
+    if @note.destroy
+      render :show
+    else
+      render :json => @note.errors.full_messages, :status => 422
+    end
+  end
+
   def update
     @note = Note.find_by_id(params[:id])
     @note.assign_attributes(params[:note])

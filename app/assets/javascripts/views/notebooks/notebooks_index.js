@@ -1,11 +1,12 @@
 NoteClipr.Views.NotebooksIndex = Backbone.View.extend({
   initialize: function  () {
     var renderCallback = this.render.bind(this);
-    this.listenTo(this.collection, "sort", renderCallback);
-    this.listenTo(NoteClipr.Store.notes, "change", renderCallback);
+    this.listenTo(this.collection, "sort destroy", renderCallback);
+    this.listenTo(NoteClipr.Store.notes, "change destroy", renderCallback);
   },
 
   events: {
+    "click div#notebook-list div span": "removeNotebook",
     "click div#notebook-list div": "showNotesIndex",
     "mouseenter div#notebook-list div": "highlight",
     "mouseleave div#notebook-list div": "removeHighlight"
@@ -25,6 +26,14 @@ NoteClipr.Views.NotebooksIndex = Backbone.View.extend({
     }));
     return this;
   },
+
+  removeNotebook: function (event) {
+    event.stopPropagation();
+    var notebookId = $(event.currentTarget).data('id');
+    var notebook = this.collection.get(notebookId);
+    notebook.destroy();
+  },
+
 
   showNotesIndex: function (event) {
     var $target = $(event.currentTarget);
