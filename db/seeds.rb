@@ -15,7 +15,6 @@ ActiveRecord::Base.transaction do
   ])
 
   Note.create!([
-
     { notebook_id: 1, title: "an important note"},
     { notebook_id: 2, title: "colors of squirrel"},
     { notebook_id: 2, body: "squirrelsquirrelsquirrel"},

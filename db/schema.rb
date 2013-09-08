@@ -11,7 +11,15 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130907204900) do
+ActiveRecord::Schema.define(:version => 20130907230026) do
+
+  create_table "note_shares", :force => true do |t|
+    t.integer  "note_id",    :null => false
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  add_index "note_shares", ["note_id"], :name => "index_note_shares_on_note_id", :unique => true
 
   create_table "notebooks", :force => true do |t|
     t.integer  "user_id",    :null => false

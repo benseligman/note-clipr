@@ -1,0 +1,2 @@
+module NoteSharesHelper
+end

@@ -5,12 +5,10 @@
 #  id          :integer          not null, primary key
 #  notebook_id :integer          not null
 #  title       :string(255)
-#  location    :string(255)
-#  url         :string(255)
-#  author      :string(255)
 #  body        :text
 #  created_at  :datetime         not null
 #  updated_at  :datetime         not null
+#  shared      :boolean          default(FALSE), not null
 #
 
 require 'test_helper'

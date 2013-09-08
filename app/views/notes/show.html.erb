@@ -1,0 +1,27 @@
+<% viewer_is_author = current_user && current_user == @note.owning_user %>
+
+<h1><%= @note.title %></h1>
+<div id="sharing-buttons"></div>
+<br>
+<div class="well">
+  <%= @note.body.html_safe %>
+</div>
+
+<script type="text/json" id="bootstrapped-note">
+  <%= render(:file => "notes/show", :formats => [:json], :locals => { :note => @note }) %>
+</script>
+
+<script type="text/javascript">
+  $(function () {
+    var noteDiv = $("<div>");
+    noteDiv.html($("#bootstrapped-note").text());
+    var noteData = JSON.parse(noteDiv.text());
+    var note = new NoteClipr.Models.Note(noteData);
+
+    var noteButtons = new NoteClipr.Views.NotesToggleShare({
+      model: note
+    });
+
+    $("#sharing-buttons").html(noteButtons.render().$el);
+  })
+</script>

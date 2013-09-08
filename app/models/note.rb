@@ -5,12 +5,10 @@
 #  id          :integer          not null, primary key
 #  notebook_id :integer          not null
 #  title       :string(255)
-#  location    :string(255)
-#  url         :string(255)
-#  author      :string(255)
 #  body        :text
 #  created_at  :datetime         not null
 #  updated_at  :datetime         not null
+#  shared      :boolean          default(FALSE), not null
 #
 
 class Note < ActiveRecord::Base
@@ -22,6 +20,11 @@ class Note < ActiveRecord::Base
   has_one :owning_user, :through => :notebook, :source => :user
   has_many :taggings
   has_many :tags, :through => :taggings
+  has_one :note_share
+
+  def shared?
+    !!note_share
+  end
 
   def save_with_tags!(tagStr)
     new_tag_bodies = !tagStr || tagStr.empty? ? [] : tagStr.split
