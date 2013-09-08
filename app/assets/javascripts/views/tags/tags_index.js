@@ -5,7 +5,9 @@ NoteClipr.Views.TagsIndex = Backbone.View.extend({
   },
 
   events: {
-    "click ul#tag-list li": "toggleTagActive"
+    "click div#tag-list div": "toggleTagActive",
+    "mouseenter div#tag-list div": "highlight",
+    "mouseleave div#tag-list div": "removeHighlight"
   },
 
   template: JST['tags/index'],
@@ -26,6 +28,14 @@ NoteClipr.Views.TagsIndex = Backbone.View.extend({
 
     tag.set("active", !tagActive);
     $el.toggleClass("active");
+  },
+
+ highlight: function (event) {
+    $(event.currentTarget).addClass("highlighted");
+  },
+
+  removeHighlight: function (event) {
+    $(event.currentTarget).removeClass("highlighted");
   }
 
 });

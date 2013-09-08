@@ -10,8 +10,10 @@ NoteClipr.Views.NotesIndex = Backbone.View.extend({
   },
 
   events: {
-    "click ul#notes-index li": "update",
-    "click button#new-note": "new"
+    "click div#note-list div": "update",
+    "click button#new-note": "new",
+    "mouseenter div#note-list div": "highlight",
+    "mouseleave div#note-list div": "removeHighlight"
   },
 
   template: JST['notes/index'],
@@ -36,6 +38,14 @@ NoteClipr.Views.NotesIndex = Backbone.View.extend({
 
   new: function (event) {
     NoteClipr.Store.Router.navigate("#/notebooks/" + this.notebook_id + "/notes/new",  { trigger: true });
+  },
+
+  highlight: function (event) {
+    $(event.currentTarget).addClass("highlighted");
+  },
+
+  removeHighlight: function (event) {
+    $(event.currentTarget).removeClass("highlighted");
   }
 
 });

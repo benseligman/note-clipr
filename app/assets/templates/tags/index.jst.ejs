@@ -1,8 +1,8 @@
-<ul id="tag-list">
+<div id="tag-list">
   <% this.collection.each(function (model) { %>
-    <li data-id="<%= model.id %>" class="<%= model.get("active") ? "active" : "" %>">
-      <%= model.escape("body") %>
-    </li>
+    <div data-id="<%= model.id %>" class="list-item <%= model.get("active") ? "active" : "" %>">
+      <span class="glyphicon glyphicon-tag"></span><%= model.escape("body") %>
+    </div>
   <% }); %>
-</ul>
+</div>
 <br>

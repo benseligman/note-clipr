@@ -147,6 +147,8 @@ GEM
       rack-raw-upload
       rails (>= 3.2.0)
       sass-rails
+    sanitize (2.0.6)
+      nokogiri (>= 1.4.4)
     sass (3.2.10)
     sass-rails (3.2.6)
       railties (~> 3.2.0)
@@ -191,5 +193,6 @@ DEPENDENCIES
   rabl
   rails (= 3.2.13)
   rich
+  sanitize
   sass-rails (~> 3.2.3)
   uglifier (>= 1.0.3)

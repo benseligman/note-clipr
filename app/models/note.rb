@@ -22,6 +22,8 @@ class Note < ActiveRecord::Base
   has_many :tags, :through => :taggings
   has_one :note_share
 
+  before_save :sanitize_note_body
+
   def shared?
     !!note_share
   end
@@ -42,6 +44,13 @@ class Note < ActiveRecord::Base
         Tagging.create!(:note_id => self.id, :tag_id => tag.id)
       end
     end
+
+  end
+
+  private
+
+  def sanitize_note_body
+    self.body = Sanitize.clean(self.body, Sanitize::Config::RELAXED)
   end
 end
 

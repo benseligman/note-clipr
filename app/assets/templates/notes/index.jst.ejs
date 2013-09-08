@@ -2,12 +2,14 @@
   <button id="new-note" class="btn" type="Submit">Add a Note!</button>
 <% } %>
 
-<ul id="notes-index">
+<div id="note-list">
   <% collection.each(function (model) { %>
-      <li data-id="<%= model.id %>">
+      <div data-id="<%= model.id %>" class="list-item">
         <strong><%= model.escape("title") || "Untitled" %></strong>
         <br>
-        Last updated: <%= model.get("updated_at") ? $.timeago(model.get("updated_at")) : "" %>
-      </li>
+        <span class="deemphasized"><%= model.get("updated_at") ? $.timeago(model.get("updated_at")) : "" %></span>
+      </div>
   <% }); %>
-</ul>
+</div>
+
+
