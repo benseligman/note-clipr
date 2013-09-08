@@ -3,13 +3,14 @@
     <label for="note-title" class="hidden">Title</label>
     <input type="text" name="note[title]" class="form-control input-lg" id="note-title" value="<%= note.escape("title") %>" placeholder="Untitled">
   </div>
-  <div id="tag-list"></div>
-  <br>
 
   <div class="form-group">
     <label for="note-body" class="hidden">Body</label>
     <textarea id="note_body" name="note[body]" rows="20" value="<%= note.body %>"></textarea>
   </div>
+
+  <div id="tag-list"></div>
+  <br>
 
   <div class="form-group">
     <label for="tags" class="hidden">Add Tags (separate by spaces): </label>
@@ -17,4 +18,11 @@
   </div>
 
   <input type="submit" class="btn" value="Save Note">
+
+  <div class="note-sharing">
+    <span id="share-buttons"></span>
+    <span id="public-link" class="<%= note.get("shared") ? "" : "hidden" %>">
+      <a href="/notes/<%= note.id %>">Public Link</a>
+    </span>
+  </div>
 </form>

@@ -24,6 +24,7 @@
 
 .hidden {
   display:none;
+  margin:0;
 }
 
 .list-item {
@@ -40,8 +41,7 @@
 }
 
 button {
-  margin: 5px;
-  margin-bottom: 5px;
+  margin-top: 5px;
 }
 
 .deemphasized {
