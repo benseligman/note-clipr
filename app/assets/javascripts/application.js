@@ -15,6 +15,7 @@
 //= require jquery_ujs
 //= require jquery.timeago
 //= require serializeJSON.min
+//= require bootstrap
 //= require typeahead
 //= require underscore
 //= require backbone

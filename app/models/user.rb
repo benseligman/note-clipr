@@ -30,8 +30,8 @@ class User < ActiveRecord::Base
                        :uniqueness => :true,
                        :format => { :with => /@/ }
 
-  validates :password, :presence => { :on => :create },
-                       :length => { :minimum => 6, :allow_blank => true }
+  validates :password, :presence => true,
+                       :length => { :minimum => 6 }
   validate :password,  :matches_confirmation
 
 

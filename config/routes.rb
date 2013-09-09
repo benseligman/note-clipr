@@ -2,7 +2,7 @@ NoteClipr::Application.routes.draw do
   mount Rich::Engine => '/rich', :as => 'rich'
 
   root :to => "root#root"
-  resources :users, :only => [:new, :create]
+  resource :user, :only => [:new, :create, :edit, :update]
   resource :session, :only => [:new, :create, :destroy]
 
   resources :notebooks, :only => [:index, :create, :destroy]
