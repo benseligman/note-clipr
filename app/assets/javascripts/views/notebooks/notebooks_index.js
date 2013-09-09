@@ -42,8 +42,8 @@ NoteClipr.Views.NotebooksIndex = Backbone.View.extend({
 
         oldNotebook.get("notes").remove(note);
         newNotebook.get("notes").add(note);
-        note.set("notebook_id", newNotebook.id);
-        note.save();
+        note.save({notebook_id: newNotebook.id});
+
         $dragged.remove();
       }
     });
