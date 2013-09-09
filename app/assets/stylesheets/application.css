@@ -1,7 +1,7 @@
 /*
 *= require_self
 *= require bootstrap
-*= bootstrap-glyphicons
+*= require bootstrap-glyphicons
 *= require styles
 *= require typeahead-css-fix
 */
