@@ -19,6 +19,13 @@ NoteClipr.Views.NotesIndex = Backbone.View.extend({
 
   template: JST['notes/index'],
 
+  makeElementsDraggable: function () {
+    var $list = this.$el.find(".list-item");
+    $list.draggable({
+      revert: "invalid"
+    });
+  },
+
   render: function () {
     var activeTags = NoteClipr.Store.tags.activeOnly();
     var filteredNotes = this.collection.tagFilter(activeTags).searchFilter();
@@ -28,6 +35,8 @@ NoteClipr.Views.NotesIndex = Backbone.View.extend({
       inNotebook: !!(this.notebook_id),
       activeNote: this.activeNote
     }));
+
+    this.makeElementsDraggable();
 
     return this;
   },

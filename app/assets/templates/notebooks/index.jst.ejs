@@ -1,7 +1,7 @@
 <div id="notebook-list">
   <div class="list-item"data-id="0">All Notes</div>
   <% this.collection.each(function (model) { %>
-    <div class="list-item" data-id="<%= model.id %>">
+    <div class="list-item notebook-item" data-id="<%= model.id %>">
       <span class="glyphicon glyphicon-book"></span> <%= model.escape("name") %> (<%= model.get("notes").length %>)
       <span data-id="<%= model.id %>" class="glyphicon glyphicon-trash pull-right"></span>
     </div>

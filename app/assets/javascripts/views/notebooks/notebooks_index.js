@@ -24,7 +24,29 @@ NoteClipr.Views.NotebooksIndex = Backbone.View.extend({
     this.$el.append(this.template({
       collection: this.collection
     }));
+
+    this.makeNotebooksDroppable();
+
     return this;
+  },
+
+  makeNotebooksDroppable: function () {
+    var that = this;
+    var $list = this.$el.find(".notebook-item");
+    $list.droppable({
+      drop: function (event, ui){
+        var $dragged = $(ui.draggable);
+        var note = NoteClipr.Store.notes.get($dragged.data("id"));
+        var oldNotebook = that.collection.get(note.get("notebook_id"));
+        var newNotebook = that.collection.get($(this).data("id"));
+
+        oldNotebook.get("notes").remove(note);
+        newNotebook.get("notes").add(note);
+        note.set("notebook_id", newNotebook.id);
+        note.save();
+        $dragged.remove();
+      }
+    });
   },
 
   removeNotebook: function (event) {

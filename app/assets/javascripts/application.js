@@ -15,6 +15,7 @@
 //= require jquery_ujs
 //= require jquery.timeago
 //= require serializeJSON.min
+//= require jquery-ui-1.10.3.custom
 //= require typeahead
 //= require underscore
 //= require backbone
