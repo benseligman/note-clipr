@@ -14,5 +14,15 @@ NoteClipr.Models.Note = Backbone.Model.extend({
 
     data.tags = tags;
     return data;
+  },
+
+  toJSON: function () {
+    var attrs = _.clone(this.attributes);
+    if (typeof attrs.tags !== "string") {
+      delete attrs.tags;
+    }
+
+    delete attrs.shared;
+    return attrs;
   }
 });
