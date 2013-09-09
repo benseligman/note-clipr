@@ -24,6 +24,19 @@
           <input type="submit" class="btn" value="Sign In!">
         </fieldset>
       </form>
+
+      <br>
+
+      <form action="<%= session_url %>" method="post" role="form">
+        <fieldset>
+          <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+
+          <input type="hidden" name="credentials[login_name]" value="demo">
+          <input type="hidden" name="credentials[password]" value="password">
+
+          <input type="submit" class="btn" value="Sign In as Demo User!">
+        </fieldset>
+      </form>
     </div>
   </div>
 

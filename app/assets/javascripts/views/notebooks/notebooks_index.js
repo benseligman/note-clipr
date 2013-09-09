@@ -32,6 +32,7 @@ NoteClipr.Views.NotebooksIndex = Backbone.View.extend({
     var notebookId = $(event.currentTarget).data('id');
     var notebook = this.collection.get(notebookId);
     notebook.destroy();
+    NoteClipr.Store.Router.navigate("#", { trigger: true });
   },
 
 
