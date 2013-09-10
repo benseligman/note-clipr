@@ -1,6 +1,6 @@
 # [NoteClipr](www.noteclipr.com)
 
-NoteClipr is an Evernote clone built using a **Backbone** frontend serviced by a restful **Rails** API. NoteClipr was developed as a capstone project for [App Academy](appacademy.io). Key features:
+NoteClipr is an Evernote clone built using a **Backbone** frontend serviced by a restful **Rails** API. Key features:
 
 * Custom user authentication with BCrypt
 * WYSIWYG rich-text note editing
@@ -8,3 +8,4 @@ NoteClipr is an Evernote clone built using a **Backbone** frontend serviced by a
 * Custom note search with typeahead
 * Optional public note-sharing
 * Notes can be tagged and filtered by tag
+* Notes can be dragged to move them to new notebooks
