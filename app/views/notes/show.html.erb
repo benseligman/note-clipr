@@ -4,7 +4,7 @@
 <div id="sharing-buttons"></div>
 <br>
 <div class="well">
-  <%= @note.body.html_safe %>
+  <%= @note.body && @note.body.html_safe %>
 </div>
 
 <script type="text/json" id="bootstrapped-note">
