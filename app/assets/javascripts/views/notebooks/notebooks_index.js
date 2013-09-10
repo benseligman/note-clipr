@@ -7,9 +7,7 @@ NoteClipr.Views.NotebooksIndex = Backbone.View.extend({
 
   events: {
     "click div#notebook-list div span": "removeNotebook",
-    "click div#notebook-list div": "showNotesIndex",
-    "mouseenter div#notebook-list div": "highlight",
-    "mouseleave div#notebook-list div": "removeHighlight"
+    "click div#notebook-list div": "showNotesIndex"
   },
 
   template: JST['notebooks/index'],
@@ -34,6 +32,7 @@ NoteClipr.Views.NotebooksIndex = Backbone.View.extend({
     var that = this;
     var $list = this.$el.find(".notebook-item");
     $list.droppable({
+      hoverClass: "ui-state-hover",
       drop: function (event, ui){
         var $dragged = $(ui.draggable);
         var note = NoteClipr.Store.notes.get($dragged.data("id"));
@@ -70,14 +69,6 @@ NoteClipr.Views.NotebooksIndex = Backbone.View.extend({
       formUrl = "#/notes";
     }
     NoteClipr.Store.Router.navigate(formUrl, { trigger: true });
-  },
-
-  highlight: function (event) {
-    $(event.currentTarget).addClass("highlighted");
-  },
-
-  removeHighlight: function (event) {
-    $(event.currentTarget).removeClass("highlighted");
   },
 
   _swapActiveNotebook: function ($target) {

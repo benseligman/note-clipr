@@ -1,3 +1,10 @@
+@import url(http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,300,400,600,700,800);
+
+body {
+  font-family: 'Open Sans', sans-serif;
+  background-color: rgb(254, 254, 254);
+}
+
 .navbar-inner {
   -webkit-border-radius: 0;
   -moz-border-radius: 0;
@@ -9,6 +16,10 @@
   height: 100%;
 }
 
+.notop {
+  margin-top: 0;
+}
+
 .tagging {
   border: solid gray 2px;
   margin-right: 5px;
@@ -17,12 +28,12 @@
   cursor: pointer;
 }
 
-.active {
-  background-color: rgb(209, 211, 214);
+.ui-draggable-dragging {
+  opacity: 0.4;
 }
 
-.highlighted {
-  background-color: rgb(237, 239, 242);
+.active {
+  background-color: rgb(209, 211, 214);
 }
 
 .hidden {
@@ -31,12 +42,22 @@
 }
 
 .list-item {
-  border: solid rgb(245, 245, 245) 2px;
+  background-color: rgb(252, 252, 252);
   cursor: pointer;
+  padding-bottom: 2px;
+}
+
+.ui-state-hover {
+  background-color: rgb(209, 211, 214);
+}
+
+.list-item:hover {
+  background-color: rgb(237, 239, 242);
 }
 
 .panel-body {
   padding: 0;
+  background-color: rgb(252, 252, 252);
 }
 
 .panel-default {

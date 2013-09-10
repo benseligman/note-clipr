@@ -2,7 +2,7 @@
 
 NoteClipr is an Evernote clone built using a **Backbone** frontend serviced by a restful **Rails** API. Key features:
 
-* Custom user authentication with BCrypt
+* Custom user authentication with BCrypt and OmniAuth
 * WYSIWYG rich-text note editing
 * Images can be added inline to notes
 * Custom note search with typeahead

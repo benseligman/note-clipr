@@ -4,8 +4,8 @@
       <div class="flash alert-<%= key %>"><%= value.html_safe %></div>
     <% end %>
 
-    <div class="well">
-      <h1>Sign Up!</h1>
+    <div class="well well-lg">
+      <h1 class="notop">Sign Up!</h1>
       <a href="<%= new_session_url %>">Already have an account? Sign in now!</a>
 
       <form action="<%= user_url %>" method="post" role="form">
