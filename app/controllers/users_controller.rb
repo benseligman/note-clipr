@@ -10,6 +10,7 @@ class UsersController < ApplicationController
 
   def create
     @user = User.new(params[:user])
+    @user.create_method = :oauth
 
     if @user.save
       log_in(@user)
@@ -24,7 +25,8 @@ class UsersController < ApplicationController
   end
 
   def update
-    unless self.current_user.encrypted_password == params[:old_password]
+    if self.current_user.encrypted_password &&
+      (!self.current_user.encrypted_password == params[:old_password])
       flash.now["danger"] = "Password incorrect."
       render :edit
       return

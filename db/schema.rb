@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130907230026) do
+ActiveRecord::Schema.define(:version => 20130910214349) do
 
   create_table "note_shares", :force => true do |t|
     t.integer  "note_id",    :null => false
@@ -79,7 +79,7 @@ ActiveRecord::Schema.define(:version => 20130907230026) do
   create_table "users", :force => true do |t|
     t.string   "username",        :null => false
     t.string   "email",           :null => false
-    t.string   "password_digest", :null => false
+    t.string   "password_digest"
     t.string   "session_token",   :null => false
     t.datetime "created_at",      :null => false
     t.datetime "updated_at",      :null => false

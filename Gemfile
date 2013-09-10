@@ -13,6 +13,8 @@ gem 'pg'
 gem 'rabl'
 gem 'rich'
 gem 'sanitize'
+gem 'omniauth'
+gem 'omniauth-google-oauth2'
 
 
 # Gems used only for assets and not required
