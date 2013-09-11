@@ -238,6 +238,7 @@ DEPENDENCIES
   coffee-rails (~> 3.2.1)
   database_cleaner
   debugger
+  ejs
   figaro
   jquery-rails
   kaminari

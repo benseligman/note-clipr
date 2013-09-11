@@ -1,4 +1,5 @@
 require 'spec_helper'
+require 'ejs'
 
 feature "Creating a note", :js => true do
 

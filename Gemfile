@@ -26,6 +26,7 @@ group :assets do
 end
 
 group :development, :test do
+  gem 'ejs'
   gem 'rspec-rails'
   gem 'capybara'
   gem 'selenium-webdriver'
