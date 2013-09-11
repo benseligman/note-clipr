@@ -1,5 +1,5 @@
 <div id="notebook-list">
-  <div class="list-item"data-id="0">All Notes<br><br></div>
+  <div class="list-item notebook-item-global" data-id="0">All Notes<br><br></div>
   <% this.collection.each(function (model) { %>
     <div class="list-item notebook-item" data-id="<%= model.id %>">
       <span class="glyphicon glyphicon-book"></span> <%= model.escape("name") %> (<%= model.get("notes").length %>)

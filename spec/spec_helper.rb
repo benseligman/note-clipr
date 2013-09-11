@@ -3,27 +3,20 @@ ENV["RAILS_ENV"] ||= 'test'
 require File.expand_path("../../config/environment", __FILE__)
 require 'rspec/rails'
 require 'rspec/autorun'
+require 'capybara/rails'
 
 # Requires supporting ruby files with custom matchers and macros, etc,
 # in spec/support/ and its subdirectories.
 Dir[Rails.root.join("spec/support/**/*.rb")].each { |f| require f }
 
 RSpec.configure do |config|
-  # ## Mock Framework
-  #
-  # If you prefer to use mocha, flexmock or RR, uncomment the appropriate line:
-  #
-  # config.mock_with :mocha
-  # config.mock_with :flexmock
-  # config.mock_with :rr
-
   # Remove this line if you're not using ActiveRecord or ActiveRecord fixtures
   config.fixture_path = "#{::Rails.root}/spec/fixtures"
 
   # If you're not using ActiveRecord, or you'd prefer not to run each of your
   # examples within a transaction, remove the following line or assign false
   # instead of true.
-  config.use_transactional_fixtures = true
+  config.use_transactional_fixtures = false
 
   # If true, the base class of anonymous controllers will be inferred
   # automatically. This will be the default behavior in future versions of
@@ -35,4 +28,38 @@ RSpec.configure do |config|
   # the seed, which is printed after each run.
   #     --seed 1234
   config.order = "random"
+
+
+  def sign_up(username)
+    visit "/user/new"
+    fill_in "Username", with: username
+    fill_in "Email", with: "demo@demo.demo"
+    fill_in "Password", with: "abcdef"
+    fill_in "Password Confirmation", with: "abcdef"
+    click_button "Sign Up!"
+  end
+
+  def sign_up_as_demo_user
+    sign_up("demo_user")
+  end
+
+  def sign_in_as_demo_user
+    sign_in("demo_user")
+  end
+
+  def sign_in(username)
+    visit "/session/new"
+    fill_in "Username", with: username
+    fill_in "Password", with: 'abcdef'
+    page.find()
+  end
+
+  def sign_out
+    click_link "Sign out"
+  end
+
+  def create_notebook
+    fill_in "notebook_name", with: "a notebook with notes!"
+    page.execute_script("$('form#new-notebook').submit()")
+  end
 end
