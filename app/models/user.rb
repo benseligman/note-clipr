@@ -87,9 +87,10 @@ class User < ActiveRecord::Base
   def self.create_auth(auth_info)
     user = User.find_by_email(auth_info.info.email)
     user ||= User.create!(:email => auth_info.info.email, :create_method => :oauth)
+
     Authorization.create!(:user_id => user.id,
-                 :provider => auth_info["provider"],
-                 :uid => auth_info["uid"]
+                          :provider => auth_info["provider"],
+                          :uid => auth_info["uid"]
     )
 
     user

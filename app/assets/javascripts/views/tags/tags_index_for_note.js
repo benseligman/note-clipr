@@ -7,7 +7,7 @@ NoteClipr.Views.TagsIndexForNote = Backbone.View.extend({
   },
 
   events: {
-    "click div#note-tag-list span": "removeTag"
+    "click div#note-tag-list .tagging": "removeTag"
   },
 
   template: JST['tags/index_for_note'],
@@ -23,14 +23,15 @@ NoteClipr.Views.TagsIndexForNote = Backbone.View.extend({
   removeTag: function (event) {
     var target = $(event.currentTarget);
     var tag_id = target.data('id');
+    this.collection.remove(this.collection.get(tag_id), { silent: true });
+    target.remove();
+    console.log("here once");
+
     $.ajax({
       url: "/tagging",
       type: "DELETE",
       data: { tag_id: tag_id,
-              note_id: this.parentNote.id },
-      success: function () {
-        target.remove();
-      }
+              note_id: this.parentNote.id }
     });
   }
 
