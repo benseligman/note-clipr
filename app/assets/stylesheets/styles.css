@@ -5,6 +5,11 @@ body {
   background-color: rgb(254, 254, 254);
 }
 
+.panel-body {
+  padding: 0;
+  background-color: rgb(252, 252, 252);
+}
+
 .navbar-inner {
   -webkit-border-radius: 0;
   -moz-border-radius: 0;
@@ -28,6 +33,16 @@ body {
   cursor: pointer;
 }
 
+.list-item {
+  background-color: rgb(252, 252, 252);
+  cursor: pointer;
+  padding-bottom: 2px;
+}
+
+.list-item:hover {
+  background-color: rgb(237, 239, 242);
+}
+
 .ui-draggable-dragging {
   opacity: 0.4;
 }
@@ -39,25 +54,6 @@ body {
 .hidden {
   display:none;
   margin:0;
-}
-
-.list-item {
-  background-color: rgb(252, 252, 252);
-  cursor: pointer;
-  padding-bottom: 2px;
-}
-
-.ui-state-hover {
-  background-color: rgb(209, 211, 214);
-}
-
-.list-item:hover {
-  background-color: rgb(237, 239, 242);
-}
-
-.panel-body {
-  padding: 0;
-  background-color: rgb(252, 252, 252);
 }
 
 .panel-default {

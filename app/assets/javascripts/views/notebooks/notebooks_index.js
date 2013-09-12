@@ -32,7 +32,7 @@ NoteClipr.Views.NotebooksIndex = Backbone.View.extend({
     var that = this;
     var $list = this.$el.find(".notebook-item");
     $list.droppable({
-      hoverClass: "ui-state-hover",
+      hoverClass: "active",
       drop: function (event, ui){
         var $dragged = $(ui.draggable);
         var note = NoteClipr.Store.notes.get($dragged.data("id"));
