@@ -25,8 +25,7 @@ class SessionsController < ApplicationController
 
   def google
     auth_info = request.env["omniauth.auth"]
-    @user = User.find_by_email(auth_info.info.email)
-    @user ||= User.create(:email => auth_info.info.email, :create_method => :oauth)
+    @user = User.find_or_create_by_auth(auth_info)
     log_in(@user)
     redirect_to root_url
   end

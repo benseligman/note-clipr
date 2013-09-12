@@ -5,7 +5,7 @@
 #  id              :integer          not null, primary key
 #  username        :string(255)      not null
 #  email           :string(255)      not null
-#  password_digest :string(255)      not null
+#  password_digest :string(255)
 #  session_token   :string(255)      not null
 #  created_at      :datetime         not null
 #  updated_at      :datetime         not null
@@ -41,6 +41,7 @@ class User < ActiveRecord::Base
   before_validation :set_token, :set_username, :normalize_user_info, :on => :create
   before_save { encrypt_password unless self.password.nil? }
 
+  has_many :authorizations, :dependent => :destroy
   has_many :notebooks, :dependent => :destroy
   has_many :notes, :through => :notebooks
   has_many :tags
@@ -75,6 +76,23 @@ class User < ActiveRecord::Base
 
     @encrypted_password = Password.create(self.password)
     self.password_digest = @encrypted_password
+  end
+
+  def self.find_or_create_by_auth(auth_info)
+    auth = Authorization.find_by_provider_and_uid(auth_info["provider"],
+                                                  auth_info["uid"])
+    auth ? auth.user : self.create_auth(auth_info)
+  end
+
+  def self.create_auth(auth_info)
+    user = User.find_by_email(auth_info.info.email)
+    user ||= User.create!(:email => auth_info.info.email, :create_method => :oauth)
+    Authorization.create!(:user_id => user.id,
+                 :provider => auth_info["provider"],
+                 :uid => auth_info["uid"]
+    )
+
+    user
   end
 
   def has_password?

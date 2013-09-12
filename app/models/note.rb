@@ -8,7 +8,6 @@
 #  body        :text
 #  created_at  :datetime         not null
 #  updated_at  :datetime         not null
-#  shared      :boolean          default(FALSE), not null
 #
 
 class Note < ActiveRecord::Base
