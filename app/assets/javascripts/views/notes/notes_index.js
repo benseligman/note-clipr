@@ -53,10 +53,10 @@ NoteClipr.Views.NotesIndex = Backbone.View.extend({
      var $target = $(event.currentTarget);
      var noteId = $target.data('id');
 
-     NoteClipr.Store.Router.navigate("#/notes/" + noteId + "/edit",  { trigger: true });
+     NoteClipr.Store.router.navigate("#/notes/" + noteId + "/edit",  { trigger: true });
   },
 
   new: function (event) {
-    NoteClipr.Store.Router.navigate("#/notebooks/" + this.currentNotebookId + "/notes/new",  { trigger: true });
+    NoteClipr.Store.router.navigate("#/notebooks/" + this.currentNotebookId + "/notes/new",  { trigger: true });
   }
 });

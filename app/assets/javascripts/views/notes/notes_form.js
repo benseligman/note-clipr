@@ -51,7 +51,7 @@ NoteClipr.Views.NotesForm = Backbone.View.extend({
 
         that.remove();
         var newUrl = "#/notebooks/" + that.model.get("notebook_id") + "/notes";
-        NoteClipr.Store.Router.navigate(newUrl);
+        NoteClipr.Store.router.navigate(newUrl);
       }
     });
   },
