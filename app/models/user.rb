@@ -57,7 +57,7 @@ class User < ActiveRecord::Base
     user = User.find_by_username(credentials[:login_name])
     user ||= User.find_by_email(credentials[:login_name].downcase)
 
-    user if user && user.encrypted_password == credentials[:password]
+    user if user && user.is_correct_password?(credentials[:password])
   end
 
   def as_json(options = {})
@@ -75,6 +75,14 @@ class User < ActiveRecord::Base
 
     @encrypted_password = Password.create(self.password)
     self.password_digest = @encrypted_password
+  end
+
+  def has_password?
+    !!self.encrypted_password
+  end
+
+  def is_correct_password?(password)
+    self.encrypted_password == password
   end
 
   def set_token!

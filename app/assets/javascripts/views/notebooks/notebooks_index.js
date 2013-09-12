@@ -6,7 +6,7 @@ NoteClipr.Views.NotebooksIndex = Backbone.View.extend({
   },
 
   events: {
-    "click div#notebook-list div span": "removeNotebook",
+    "click div#notebook-list div .trash": "removeNotebook",
     "click div#notebook-list div": "showNotesIndex"
   },
 
@@ -33,16 +33,18 @@ NoteClipr.Views.NotebooksIndex = Backbone.View.extend({
     var $list = this.$el.find(".notebook-item");
     $list.droppable({
       hoverClass: "active",
+      accept: function (dragged) {
+        var note = NoteClipr.Store.notes.get(dragged.data("id"));
+        var newNotebookId = $(this).data("id");
+        return note.get("notebook_id") != newNotebookId;
+      },
+
       drop: function (event, ui){
         var $dragged = $(ui.draggable);
         var note = NoteClipr.Store.notes.get($dragged.data("id"));
-        var oldNotebook = that.collection.get(note.get("notebook_id"));
-        var newNotebook = that.collection.get($(this).data("id"));
+        var newNotebookId = $(this).data("id");
 
-        oldNotebook.get("notes").remove(note);
-        newNotebook.get("notes").add(note);
-        note.save({notebook_id: newNotebook.id});
-
+        note.save({notebook_id: newNotebookId});
         $dragged.remove();
       }
     });

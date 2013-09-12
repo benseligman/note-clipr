@@ -7,7 +7,7 @@ development:
   adapter: postgresql
   host: localhost
   encoding: unicode
-  database: note_clipr_test
+  database: note_clipr_development
   pool: 5
   username: Ben
   password:

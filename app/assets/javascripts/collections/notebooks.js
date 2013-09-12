@@ -5,7 +5,6 @@ NoteClipr.Collections.Notebooks = Backbone.Collection.extend({
   url: "/notebooks",
 
   comparator: function  (notebook) {
-    return -notebook.get("notes").length;
+    return -notebook.notes().length;
   }
-
 });

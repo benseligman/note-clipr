@@ -4,10 +4,13 @@ window.NoteClipr = {
   Views: {},
   Routers: {},
   Store: {},
-  initialize: function(currentUser, notebooksData) {
+  initialize: function(currentUser, notebooksData, notesData) {
+    // Global state
     NoteClipr.Store.currentUser = currentUser;
-    NoteClipr.Store.notes = new NoteClipr.Collections.Notes(null, {notebookId: undefined});
     NoteClipr.Store.tags = new NoteClipr.Collections.Tags();
+    NoteClipr.Store.notes = new NoteClipr.Collections.Notes(notesData, {
+      parse: true
+    });
     NoteClipr.Store.notebooks = new NoteClipr.Collections.Notebooks(notebooksData, {
       parse: true
     });
@@ -19,12 +22,13 @@ window.NoteClipr = {
     var $notesPanel = $("div#notes");
     var $noteDetailPanel = $("div#note-detail");
 
-
     NoteClipr.Store.Router = new NoteClipr.Routers.Main({
       $notesPanel: $notesPanel,
       $noteDetailPanel: $noteDetailPanel,
-      notebooks:  NoteClipr.Store.notebooks
+      notebooks:  NoteClipr.Store.notebooks //replace with global? get rid of global?
     });
+
+    //Views not dependent on router:
 
     var searchView = new NoteClipr.Views.NotesSearch( {
       collection: NoteClipr.Store.notes

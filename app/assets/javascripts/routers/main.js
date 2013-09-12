@@ -21,18 +21,10 @@ NoteClipr.Routers.Main = Backbone.Router.extend({
 
   notesPanel: function (notebook_id, activeNote) {
     this._removePanels();
-    var notes;
-
-    if (notebook_id) {
-      var notebook = this.collection.get(notebook_id);
-      notes = notebook.get("notes");
-    } else {
-      notes = NoteClipr.Store.notes;
-    }
 
     var view = new NoteClipr.Views.NotesIndex({
-      collection: notes,
-      notebook_id: notebook_id,
+      collection: NoteClipr.Store.notes,
+      currentNotebookId: notebook_id,
       activeNote: activeNote
     });
 
@@ -41,9 +33,7 @@ NoteClipr.Routers.Main = Backbone.Router.extend({
   },
 
   newNoteDetailPanel: function (notebook_id) {
-    var notes = this.collection.get(notebook_id).get("notes");
     var note = new NoteClipr.Models.Note();
-    notes.add(note);
     NoteClipr.Store.notes.add(note);
 
     var that = this;

@@ -2,8 +2,8 @@
   <div class="list-item notebook-item-global" data-id="0">All Notes<br><br></div>
   <% this.collection.each(function (model) { %>
     <div class="list-item notebook-item" data-id="<%= model.id %>">
-      <span class="glyphicon glyphicon-book"></span> <%= model.escape("name") %> (<%= model.get("notes").length %>)
-      <span data-id="<%= model.id %>" class="glyphicon glyphicon-trash pull-right"></span>
+      <span class="glyphicon glyphicon-book"></span> <%= model.escape("name") %> (<%= model.notes().length %>)
+      <span data-id="<%= model.id %>" class="trash glyphicon glyphicon-trash pull-right"></span>
     </div>
   <% }); %>
 </div>

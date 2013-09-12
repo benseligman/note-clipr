@@ -10,6 +10,26 @@ NoteClipr.Collections.Notes = Backbone.Collection.extend({
     return -Date.parse(model.get("updated_at"));
   },
 
+  displayFilter: function (options) {
+    return this.notebookFilter(options.currentNotebookId)
+      .tagFilter(options.activeTags)
+      .searchFilter();
+  },
+
+  notebookFilter: function (currentNotebookId) {
+    if (!currentNotebookId) {
+      return this;
+    }
+
+    currentNotebookId
+
+    var filtered = this.filter(function (note) {
+      return note.get("notebook_id") == currentNotebookId;
+    });
+
+    return new NoteClipr.Collections.Notes(filtered);
+  },
+
   searchFilter: function () {
     var filtered = this.filter(function (note) {
       return note.get("matchesSearch");
@@ -19,7 +39,7 @@ NoteClipr.Collections.Notes = Backbone.Collection.extend({
   },
 
   tagFilter: function (tags) {
-    if (tags.length === 0) {
+    if (!tags || tags.length === 0) {
       return this;
     }
 

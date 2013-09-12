@@ -22,24 +22,35 @@
       </div>
     </div>
   </div>
-<script type="text/json" id="bootstrapped-notebooks">
-  <%= render(:file => 'notebooks/index', :formats => [:json], :locals => { :notebooks => self.current_user.notebooks.includes(:notes => [:tags, :note_share]) }) %>
-</script>
 
 <script type="text/json" id="bootstrapped-user">
   <%= self.current_user.to_json %>
 </script>
 
+<script type="text/json" id="bootstrapped-notebooks">
+  <%= render(:file => 'notebooks/index', :formats => [:json], :locals => { :notebooks => self.current_user.notebooks }) %>
+</script>
+
+<script type="text/json" id="bootstrapped-notes">
+  <%= render(:file => 'notes/index', :formats => [:json], :locals => { :notes => self.current_user.notes.includes(:note_share, :tags) }) %>
+</script>
+
+
 <script type="text/javascript">
   $(function () {
+    var userDiv = $("<div>");
+    userDiv.html($("#bootstrapped-user").text());
+    var currentUser = JSON.parse(userDiv.text());
+
     var notebookDiv = $("<div>");
     notebookDiv.html($("#bootstrapped-notebooks").text());
     var notebooksData = JSON.parse(notebookDiv.text());
 
-   var userDiv = $("<div>");
-   userDiv.html($("#bootstrapped-user").text());
-   var currentUser = JSON.parse(userDiv.text());
 
-    NoteClipr.initialize(currentUser, notebooksData);
+    var noteDiv = $("<div>");
+    noteDiv.html($("#bootstrapped-notes").text());
+    var notesData = JSON.parse(noteDiv.text());
+
+    NoteClipr.initialize(currentUser, notebooksData, notesData);
   });
 </script>

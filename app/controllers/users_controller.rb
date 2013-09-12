@@ -25,8 +25,9 @@ class UsersController < ApplicationController
   end
 
   def update
-    if self.current_user.encrypted_password &&
-      (!self.current_user.encrypted_password == params[:old_password])
+    if self.current_user.has_password? &&
+      !self.current_user.is_correct_password?(params[:old_password])
+
       flash.now["danger"] = "Password incorrect."
       render :edit
       return
