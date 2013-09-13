@@ -43,4 +43,6 @@ NoteClipr::Application.configure do
       :secret_access_key => ENV["AWS_SECRET_ACCESS_KEY"]
     }
   }
+
+  ENV["REDISTOGO_URL"] = 'redis://localhost:6379'
 end

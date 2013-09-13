@@ -1,5 +1,4 @@
 NoteClipr.Views.NotesSearch = Backbone.View.extend({
-
   events: {
     "submit": "preventSubmission",
     "keyup": "applySearch"

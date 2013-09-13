@@ -2,8 +2,14 @@
   <div class="navbar-inner">
     <div class="navbar-header">
       <a href="/" class="navbar-brand">NoteClipr</a>
+    <% if !logged_in? %>
+      <span class="navbar-text"><%= self.notes_so_far %> notes stored so far!</span>
+    <% end %>
     </div>
-    <form class="navbar-form navbar-left" role="search"></form>
+    <% if logged_in? %>
+      <form class="navbar-form navbar-left note-search"></form> <!-- hook for backbone search bar -->
+    <% end %>
+
     <ul class="nav navbar-nav navbar-right">
       <% if logged_in? %>
         <li><%= link_to "Welcome, #{current_user.username}", edit_user_url %></li>

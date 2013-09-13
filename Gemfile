@@ -15,6 +15,7 @@ gem 'pg'
 gem 'rabl'
 gem 'rich' # text editing
 gem 'sanitize'
+gem 'redis'
 
 
 # Gems used only for assets and not required

@@ -1,5 +1,5 @@
 NoteClipr.Store.setStaticPanels = function () {
-  var $searchPanel = $(".navbar-form");
+  var $searchPanel = $(".note-search");
   var $notebooksPanel = $("div#notebooks");
   var $tagsPanel = $("div#tags");
   var searchView = new NoteClipr.Views.NotesSearch( {
