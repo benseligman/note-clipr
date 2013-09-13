@@ -59,5 +59,19 @@ module NoteClipr
 
     # Version of your assets, change this if you want to expire all your assets
     config.assets.version = '1.0'
+
+    if ENV["REDISTOGO_URL"]
+      config = NoteClipr::Application.config
+      uri = URI.parse(ENV["REDISTOGO_URL"])
+
+      config.cache_store = [
+        :redis_store, {
+          :host => uri.host,
+          :port => uri.port,
+          :password => uri.password,
+          :namespace => "cache"
+        }
+      ]
+    end
   end
 end
