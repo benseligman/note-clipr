@@ -13,9 +13,9 @@ gem 'omniauth-google-oauth2'
 gem 'paperclip'
 gem 'pg'
 gem 'rabl'
+gem 'redis-rails'
 gem 'rich' # text editing
 gem 'sanitize'
-gem 'redis-rails'
 
 
 # Gems used only for assets and not required
