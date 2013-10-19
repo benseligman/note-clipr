@@ -21,8 +21,6 @@ NoteClipr.Collections.Notes = Backbone.Collection.extend({
       return this;
     }
 
-    currentNotebookId
-
     var filtered = this.filter(function (note) {
       return note.get("notebook_id") == currentNotebookId;
     });

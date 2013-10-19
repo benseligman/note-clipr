@@ -43,8 +43,9 @@ class User < ActiveRecord::Base
 
   has_many :authorizations, :dependent => :destroy
   has_many :notebooks, :dependent => :destroy
+  has_many :tags, :dependent => :destroy
+
   has_many :notes, :through => :notebooks
-  has_many :tags
 
   include BCrypt
 

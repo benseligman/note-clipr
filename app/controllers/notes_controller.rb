@@ -1,5 +1,6 @@
 class NotesController < ApplicationController
   before_filter :authorize_for_note, :only => [:show]
+
   def index
     @notes = Note.all
   end
@@ -18,9 +19,10 @@ class NotesController < ApplicationController
     @note = Note.find_by_id(params[:id])
     @note.assign_attributes(params[:note])
 
-    if @note.save_with_tags!(params[:tags])
+    begin
+      @note.save_with_tags!(params[:tags])
       render :show
-    else
+    rescue
       render :json => @note.errors.full_messages, :status => 422
     end
   end
@@ -28,9 +30,10 @@ class NotesController < ApplicationController
   def create
     @note = Note.new(params[:note])
 
-    if @note.save_with_tags!(params[:tags])
+    begin
+      @note.save_with_tags!(params[:tags])
       render :show
-    else
+    rescue
       render :json => @note.errors.full_messages, :status => 422
     end
   end

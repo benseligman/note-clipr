@@ -32,6 +32,7 @@ group :development, :test do
   gem 'ejs'
   gem 'rspec-rails'
   gem 'selenium-webdriver'
+  gem 'launchy'
 end
 
 group :development do

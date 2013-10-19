@@ -43,6 +43,7 @@ feature "Creating a note", :js => true do
 
       within("#note-list") { find(".list-item").click }
 
+      sleep 2.seconds # this is a hack--not sure why default capybara waiting is broken
       within("#note-tag-list") do
         page.should have_text("some")
         page.should have_text("new")

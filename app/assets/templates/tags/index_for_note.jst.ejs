@@ -1,8 +1,6 @@
-<div id="note-tag-list">
-  <strong>Tags: </strong>
-  <% tags.each(function (tag) { %>
-    <span class="tagging btn" data-id="<%= tag.id %>">
-      <%= tag.escape("body") %> <span class="glyphicon glyphicon-remove"></span>
-    </span>
-  <% }) %>
-</div>
+<strong>Tags: </strong>
+<% tags.each(function (tag) { %>
+  <span class="tagging btn" data-id="<%= tag.id %>">
+    <%= tag.escape("body") %> <span class="glyphicon glyphicon-remove"></span>
+  </span>
+<% }) %>
