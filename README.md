@@ -1,4 +1,4 @@
-# [NoteClipr](www.noteclipr.com)
+# [NoteClipr](http://www.noteclipr.com)
 
 NoteClipr is an Evernote clone built using a **Backbone** frontend serviced by a restful **Rails** API. Key features:
 
