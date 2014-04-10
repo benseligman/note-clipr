@@ -1,5 +1,5 @@
 NoteClipr.Views.NotesToggleShare = Backbone.View.extend({
-  el: "<span>",
+  el: "<div class='share-buttons'>",
 
   events: {
     "click button#unshare-note":"unshare",

@@ -7,15 +7,32 @@
   }
 }
 
-
 body {
   font-family: 'Open Sans', sans-serif;
   background-color: rgb(254, 254, 254);
 }
 
+.btn {
+  margin: 5px;
+}
+
+#new-note {
+  width: 95%;
+}
+
 .panel-body {
-  padding: 0;
   background-color: rgb(252, 252, 252);
+  padding: 0;
+}
+
+.notebook-item-global {
+  margin-bottom: -15px;
+  padding-top: 5px;
+  text-align: center;
+}
+
+.glyphicon {
+  padding: 0 4px;
 }
 
 .navbar-inner {
@@ -33,12 +50,20 @@ body {
   margin-top: 0;
 }
 
+.note-sharing .share-buttons {
+  display: inline-block;
+}
+
+.note-sharing {
+  display: inline-block;
+}
+
 .tagging {
   border: solid gray 2px;
+  cursor: pointer;
   margin-right: 5px;
   padding: 2px;
   text-align: center;
-  cursor: pointer;
 }
 
 .list-item {

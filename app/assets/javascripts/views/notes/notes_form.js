@@ -27,8 +27,8 @@ NoteClipr.Views.NotesForm = Backbone.View.extend({
     });
 
     this.$el.html(renderedTemplate);
-    this.$el.find("div#note-tag-list").html(this.tagList.render().$el);
-    this.$el.find("span#share-buttons").html(this.shareButtons.render().$el);
+    this.$el.find("#note-tag-list").html(this.tagList.render().$el);
+    this.$el.find(".note-sharing").prepend(this.shareButtons.render().$el);
 
     this._createEditor();
 
