@@ -28,25 +28,12 @@ NoteClipr.Views.NotesSearch = Backbone.View.extend({
   },
 
   applySearch: function () {
-    var targetEl = this.$el.find("input#search-text").get(0);
-    var searchTerms = $(targetEl).val();
+    var searchField = this.$el.find("input#search-text").get(0);
+    var searchTerms = $(searchField).val();
 
-    var that = this;
-    if (searchTerms.replace(/ /g, "")) {
-      this.collection.each(function (note) {
-        note.set("matchesSearch", that._checkMatch(note, searchTerms));
-      });
-    } else {
-      this.collection.each(function (note) {
-        note.set("matchesSearch", true );
-      });
-    }
-  },
-
-  _checkMatch: function (note, searchTerms) {
-    var re = new RegExp(".*" + searchTerms + ".*", "i");
-    var title = note.get("title") || "";
-    return !!title.match(re);
+    this.collection.each(function (note) {
+      note.setSearchMatching(searchTerms);
+    });
   },
 
   preventSubmission: function (event) {

@@ -24,5 +24,16 @@ NoteClipr.Models.Note = Backbone.Model.extend({
 
     delete attrs.shared;
     return attrs;
+  },
+
+  setSearchMatching: function (searchTerms) {
+    var matches = !searchTerms.replace(/ /g, "") || this._checkMatch(searchTerms)
+    this.set("matchesSearch", matches)
+  },
+
+  _checkMatch: function(searchTerms) {
+    var re = new RegExp(".*" + searchTerms + ".*", "i");
+    var title = this.get("title") || "";
+    return !!title.match(re);
   }
 });

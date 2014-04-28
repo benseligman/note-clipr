@@ -43,7 +43,6 @@ class Note < ActiveRecord::Base
         Tagging.create!(:note_id => self.id, :tag_id => tag.id)
       end
     end
-
   end
 
   private
