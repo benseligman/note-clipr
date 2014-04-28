@@ -17,9 +17,7 @@
 //= require serializeJSON.min
 //= require jquery-ui-1.10.3.custom
 //= require typeahead
-//= require underscore
-//= require backbone
-//= require rich
+//= angular.min
 //
 //  App Javascripts
 //= require note_clipr

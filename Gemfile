@@ -3,7 +3,6 @@ source 'https://rubygems.org'
 gem 'rails', '3.2.17'
 
 gem 'aws-sdk'
-gem 'backbone-on-rails'
 gem 'bcrypt-ruby'
 gem 'figaro'
 gem 'jquery-rails'

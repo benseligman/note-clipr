@@ -1,56 +1,23 @@
-  <div class="row">
-    <div class="col-md-3">
-      <div class="panel panel-default">
-        <div class="panel-heading">Notebooks</div>
-        <div class="panel-body" id="notebooks"></div>
-      </div>
-      <div class="panel panel-default">
-        <div class="panel-heading">Tags</div>
-        <div class="panel-body" id="tags"></div>
-      </div>
+<div ng-app='noteClipr' class="row">
+  <div ng-controller='NotebooksCtrl' class="col-md-3">
+    <div class="panel panel-default">
+      <div ng-controller='NotebooksCtrl' class="panel-heading">Notebooks</div>
+      <div class="panel-body" id="notebooks"></div>
     </div>
-    <div class="col-md-3">
-      <div class="panel panel-default">
-        <div class="panel-heading">Notes</div>
-        <div class="panel-body" id="notes"></div>
-      </div>
-    </div>
-    <div class="col-md-6">
-      <div class="panel panel-default">
-        <!-- <div class="panel-heading">View</div> -->
-        <div class="panel-body" id="note-detail"></div>
-      </div>
+    <div ng-controller='TagsCtrl' class="panel panel-default">
+      <div class="panel-heading">Tags</div>
+      <div class="panel-body" id="tags"></div>
     </div>
   </div>
-
-<script type="text/json" id="bootstrapped-user">
-  <%= self.current_user.to_json %>
-</script>
-
-<script type="text/json" id="bootstrapped-notebooks">
-  <%= render(:file => 'notebooks/index', :formats => [:json], :locals => { :notebooks => self.current_user.notebooks }) %>
-</script>
-
-<script type="text/json" id="bootstrapped-notes">
-  <%= render(:file => 'notes/index', :formats => [:json], :locals => { :notes => self.current_user.notes.includes(:note_share, :tags) }) %>
-</script>
-
-
-<script type="text/javascript">
-  $(function () {
-    var userDiv = $("<div>");
-    userDiv.html($("#bootstrapped-user").text());
-    var currentUser = JSON.parse(userDiv.text());
-
-    var notebookDiv = $("<div>");
-    notebookDiv.html($("#bootstrapped-notebooks").text());
-    var notebooksData = JSON.parse(notebookDiv.text());
-
-
-    var noteDiv = $("<div>");
-    noteDiv.html($("#bootstrapped-notes").text());
-    var notesData = JSON.parse(noteDiv.text());
-
-    NoteClipr.initialize(currentUser, notebooksData, notesData);
-  });
-</script>
+  <div ng-controller='NotesCtrl' class="col-md-3">
+    <div class="panel panel-default">
+      <div class="panel-heading">Notes</div>
+      <div class="panel-body" id="notes"></div>
+    </div>
+  </div>
+  <div ng-controller='NoteCtrl' class="col-md-6">
+    <div class="panel panel-default">
+      <div class="panel-body" id="note-detail"></div>
+    </div>
+  </div>
+</div>
