@@ -14,17 +14,12 @@
 //= require jquery
 //= require jquery_ujs
 //= require jquery.timeago
-//= require serializeJSON.min
 //= require jquery-ui-1.10.3.custom
 //= require typeahead
-//= angular.min
+//= require angular.min
 //
 //  App Javascripts
 //= require note_clipr
-//= require static_panels
-//= require_tree ../templates
-//= require_tree ./models
-//= require_tree ./collections
-//= require_tree ./views
-//= require_tree ./routers
+//= require_tree ./controllers
+//= require_tree ./services
 

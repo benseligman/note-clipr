@@ -38,5 +38,4 @@ group :development do
   gem 'binding_of_caller'
   gem 'byebug'
   gem 'pry-rails'
-  gem 'quiet_assets'
 end

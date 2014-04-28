@@ -1,23 +1,29 @@
 <div ng-app='noteClipr' class="row">
-  <div ng-controller='NotebooksCtrl' class="col-md-3">
+  <div class="col-md-3">
     <div class="panel panel-default">
-      <div ng-controller='NotebooksCtrl' class="panel-heading">Notebooks</div>
-      <div class="panel-body" id="notebooks"></div>
+      <div class="panel-heading">Notebooks</div>
+      <div ng-controller='NotebooksCtrl' class="panel-body" id="notebooks">
+        <div ng-repeat="notebook in notebooks" class="notebook-item list-item">
+          <span class="glyphicon glyphicon-book"></span>
+          {{notebook.name}}
+          <span class="trash glyphicon glyphicon-trash pull-right"></span>
+        </div>
+      </div>
     </div>
-    <div ng-controller='TagsCtrl' class="panel panel-default">
-      <div class="panel-heading">Tags</div>
-      <div class="panel-body" id="tags"></div>
-    </div>
+    <%# <div ng-controller='TagsCtrl' class="panel panel-default"> %>
+      <%# <div class="panel-heading">Tags</div> %>
+      <%# <div class="panel-body" id="tags"></div> %>
+    <%# </div> %>
   </div>
-  <div ng-controller='NotesCtrl' class="col-md-3">
-    <div class="panel panel-default">
-      <div class="panel-heading">Notes</div>
-      <div class="panel-body" id="notes"></div>
-    </div>
-  </div>
-  <div ng-controller='NoteCtrl' class="col-md-6">
-    <div class="panel panel-default">
-      <div class="panel-body" id="note-detail"></div>
-    </div>
-  </div>
+  <%# <div ng-controller='NotesCtrl' class="col-md-3"> %>
+    <%# <div class="panel panel-default"> %>
+      <%# <div class="panel-heading">Notes</div> %>
+      <%# <div class="panel-body" id="notes"></div> %>
+    <%# </div> %>
+  <%# </div> %>
+  <%# <div ng-controller='NoteCtrl' class="col-md-6"> %>
+    <%# <div class="panel panel-default"> %>
+      <%# <div class="panel-body" id="note-detail"></div> %>
+    <%# </div> %>
+  <%# </div> %>
 </div>
