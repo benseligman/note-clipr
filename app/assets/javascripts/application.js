@@ -20,6 +20,6 @@
 //
 //  App Javascripts
 //= require note_clipr
+//= require_tree ./filters
 //= require_tree ./controllers
 //= require_tree ./services
-

@@ -10,17 +10,29 @@
         </div>
       </div>
     </div>
-    <%# <div ng-controller='TagsCtrl' class="panel panel-default"> %>
-      <%# <div class="panel-heading">Tags</div> %>
-      <%# <div class="panel-body" id="tags"></div> %>
-    <%# </div> %>
+    <div ng-controller='TagsCtrl' class="panel panel-default">
+      <div class="panel-heading">Tags</div>
+      <div class="panel-body" id="tags">
+        <div ng-repeat="tag in tags" class="list-item">
+          <span class="glyphicon glyphicon-tag"></span>
+          {{tag}}
+        </div>
+      </div>
+    </div>
   </div>
-  <%# <div ng-controller='NotesCtrl' class="col-md-3"> %>
-    <%# <div class="panel panel-default"> %>
-      <%# <div class="panel-heading">Notes</div> %>
-      <%# <div class="panel-body" id="notes"></div> %>
-    <%# </div> %>
-  <%# </div> %>
+  <div ng-controller='NotesCtrl' class="col-md-3">
+    <div class="panel panel-default">
+      <div class="panel-heading">Notes</div>
+      <div class="panel-body" id="notes">
+        <div ng-repeat="note in notes" class="list-item">
+          <strong class="note-title">{{note.title}}</strong>
+          <span class="trash glyphicon glyphicon-trash pull-right"></span>
+          <br>
+          <span class="deemphasized">{{note.updated_at | timeAgo}}</span>
+        </div>
+      </div>
+    </div>
+  </div>
   <%# <div ng-controller='NoteCtrl' class="col-md-6"> %>
     <%# <div class="panel panel-default"> %>
       <%# <div class="panel-body" id="note-detail"></div> %>

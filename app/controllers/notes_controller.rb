@@ -2,7 +2,7 @@ class NotesController < ApplicationController
   before_filter :authorize_for_note, :only => [:show]
 
   def index
-    @notes = Note.all
+    @notes = current_user.notes
   end
 
   def destroy

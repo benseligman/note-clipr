@@ -7,7 +7,7 @@ NoteClipr::Application.routes.draw do
   get "/auth/google_oauth2/callback" => "sessions#google"
 
   resources :notebooks, :only => [:index, :create, :destroy]
-  resources :notes, :only => [:show, :create, :update, :destroy]
+  resources :notes, :only => [:index, :show, :create, :update, :destroy]
   resource :tagging, :only => [:destroy]
   resource :note_share, :only => [:create, :destroy]
 end
